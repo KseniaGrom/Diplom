@@ -1,0 +1,12 @@
+.footer {
+    width: 100%;
+    background-color: #2D2B2F;
+}
+
+.footer-conteiner {
+    padding-top: 52px;
+    padding-left: 343px;
+    display: flex;
+    gap: 254px;
+    height: 423px;
+}

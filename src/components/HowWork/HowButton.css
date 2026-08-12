@@ -1,0 +1,22 @@
+.howwork-button {
+    border: 1px solid #FFFFFF;
+    background: none;
+    color: #FFFFFF;
+    width: 325px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.howwork-button:hover {
+    background-color: #FFCA62;
+    color: #2D2B2F;
+    border: none;
+}
+
+.howwork-button:active {
+    background-color: #FFFFFF;
+    color: #2D2B2F;
+    border: none;
+}

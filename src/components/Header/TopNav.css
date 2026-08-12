@@ -1,0 +1,33 @@
+.top-nav {
+    background: #1a1a1a;
+    height: 94px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.top-nav__container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 258px;
+}
+
+.top-nav__links {
+  display: flex;
+  gap: 83px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav__link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.top-nav__link:hover {
+  color: #FFA800;
+}

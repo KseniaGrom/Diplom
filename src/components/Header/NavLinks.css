@@ -1,0 +1,21 @@
+.nav-links {
+    display: flex;
+    gap: 83px;
+    list-style: none;
+    padding-left: 258px;
+    padding-top: 26px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-links__item {
+  font-size: 30px;
+  font-weight: 300;
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-links__item:hover {
+  color: #f5a623;
+}

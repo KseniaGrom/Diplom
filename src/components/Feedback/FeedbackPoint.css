@@ -1,0 +1,26 @@
+.feedback-point {
+  margin-top: 137px;
+  margin-left: 725px;
+  margin-bottom: 122px;
+  gap: 10px;
+}
+
+.feedback-point-container{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.feedback-point__point-first {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+}
+
+.feedback-point__point-second {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background-color: #E5E5E5;
+}

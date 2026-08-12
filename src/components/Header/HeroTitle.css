@@ -1,0 +1,18 @@
+.hero-title {
+  width: 506px;
+}
+
+.hero-title__text {
+  font-size: 72px;
+  font-weight: 100;
+  margin: 0;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+.hero-title__span {
+  font-size: 72px;
+  font-weight: 700;
+  margin: 0;
+  color: #FFFFFF;
+}

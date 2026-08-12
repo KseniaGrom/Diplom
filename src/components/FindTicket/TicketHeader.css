@@ -1,0 +1,59 @@
+.ticket-header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #E4E0E9;
+  width: 197px;
+  padding: 58px 18px 92px 26px;
+  gap: 16px;
+}
+
+.ticket-header__train-icon {
+  object-fit: contain;
+}
+
+.ticket-header__number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3E3C41;
+  padding-top: 8px;
+}
+
+.ticket-header__route {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 153px;
+  padding-top: 15px;
+}
+
+.ticket-header__city-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ticket-header__city {
+  font-size: 16px;
+  font-weight: 400;
+  color: #292929;
+  white-space: nowrap;
+}
+
+.ticket-header__city--first {
+  color: #928F94;
+}
+
+.ticket-header__arrow {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.ticket-header__name {
+  font-weight: 400;
+  color: #292929;
+  font-size: 16px;
+  padding-top: 4px;
+}

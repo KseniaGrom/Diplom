@@ -1,0 +1,20 @@
+.footer-web-h2 {
+    padding-top: 44px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.footer-web-links{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0;
+    gap: 48px;
+    padding-top: 28px;
+}
+
+.footer-web-links__link:active .footer-web-links__icon {
+    filter: brightness(0) saturate(100%) invert(90%) sepia(47%) saturate(2217%) hue-rotate(311deg) brightness(104%) contrast(101%);
+}

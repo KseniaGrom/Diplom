@@ -1,0 +1,21 @@
+.ticket-button {
+  width: 228px;
+  padding: 6px 13px 9px 9px;
+  background: #FFA800;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.ticket-button:hover {
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.ticket-button:active {
+  border: 1px solid #FFA800;
+  color: #FFA800;
+  background-color: #FFFFFF;
+}

@@ -1,0 +1,52 @@
+.toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.toggle-item__icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 34px;
+}
+
+.toggle-item__label {
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFFFFF;
+  flex: 1;
+}
+
+.toggle-item__btn {
+  width: 72px;
+  height: 19px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.toggle-item__circle {
+  width: 28px;
+  height: 28px;
+  background: #C4C4C4;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: 0;
+}
+
+.toggle-item__btn--on {
+  background: #FCDC9D;
+}
+
+.toggle-item__btn--on .toggle-item__circle {
+  transform: translateX(50px);
+  background: #FFA800;
+}

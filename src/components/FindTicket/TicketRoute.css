@@ -1,0 +1,11 @@
+.ticket-route {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ticket-route__points {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

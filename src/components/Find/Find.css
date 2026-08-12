@@ -1,0 +1,121 @@
+.find-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.find__count {
+  font-size: 18px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+.find__controls {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.find__sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #928F94;
+  cursor: pointer;
+  position: relative;
+}
+
+.find__sort-label {
+  color: #928F94;
+}
+
+.find__sort-value {
+  color: #292929;
+  font-weight: 400;
+  position: relative;
+  cursor: pointer;
+}
+
+.find__show {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+.find__show-label {
+  color: #928F94;
+}
+
+.find__show-options {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.find__show-option {
+  font-size: 18px;
+  font-weight: 400;
+  color: #928F94;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.find__show-option:hover {
+  color: #292929;
+}
+
+.find__show-option--active {
+  color: #292929;
+}
+
+.find__dropdown {
+  position: absolute;
+  top: 0;
+  left: 140px;
+  background: #F7F5F9;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 139px;
+}
+
+.find__dropdown span {
+  padding: 9px 0px 10px 7px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.find__dropdown span:hover {
+  background: #FFCA62;
+}
+
+.find__dropdown--active {
+  background: #FFCA62;
+}
+
+.find__dropdown span:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #E5E5E5;
+  width: 100%;
+}

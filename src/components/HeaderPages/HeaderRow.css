@@ -1,0 +1,137 @@
+.header-row {
+    height: 98px;
+    background-color: #3E3C41;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.header-row__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #FFA800;
+    transition: width 0.5s ease;
+    z-index: 0;
+    border-radius: 0;
+}
+
+.header-row__background::after {
+    content: '';
+    position: absolute;
+    right: -36px;
+    top: 0;
+    width: 37px;
+    height: 100%;
+    background-color: #FFA800;
+    clip-path: polygon(
+        0 0,
+        100% 50%,
+        100% 50%,
+        0 100%
+    );
+    transition: opacity 0.5s ease;
+}
+
+.header-row__background[style*="width: 100%"] {
+    clip-path: none;
+}
+
+.header-row__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    gap: 34px;  
+    margin-left: 230px;
+}
+
+.header-row__item-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    height: 100%;
+    width: 324px;
+}
+
+.header-row__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    padding: 0;
+}
+
+.header-row__number-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: none;
+    border: 3px solid #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.header-row__number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #FFFFFF;
+    transition: color 0.3s ease;
+}
+
+.header-row__label {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.header-row__item--active .header-row__number-wrapper {
+    background-color: #FFA800;
+}
+
+
+.header-row__corner {
+    width: 37px;
+    height: 97px;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+}
+
+.header-row__corner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 63%;
+    background: #E5E5E5;
+    transform: translateX(-16px) rotate(-37deg);
+    transform-origin: top right;
+    transition: background 0.3s ease;
+}
+
+.header-row__corner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 63%;
+    background: #E5E5E5;
+    transform: translateX(-16px) rotate(37deg);
+    transform-origin: bottom right;
+    transition: background 0.3s ease;
+}

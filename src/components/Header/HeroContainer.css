@@ -1,0 +1,8 @@
+.hero-container {
+    padding: 253px 232px 0 349px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 104px;
+}

@@ -1,0 +1,43 @@
+.footer-sub-h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #FFFFFF;
+    height: 61px;
+}
+
+.footer-sub-email{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-sub-email-lable {
+    height: 44px;
+    color: #E5E5E5;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.footer-sub-email-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 33px;
+}
+
+.footer-sub-email-input {
+    border: none;
+    height: 60px;
+    width: 447px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    padding: 17px 351px 17px 21px;
+    color: #292929;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+.direction-group__input::placeholder {
+  color: #E5E5E5;
+}

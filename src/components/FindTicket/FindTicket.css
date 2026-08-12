@@ -1,0 +1,19 @@
+.findticket {
+  padding-left: 68px;
+  background: #F7F5F9;
+}
+
+.findticket__header {
+  margin-bottom: 24px;
+}
+
+.findticket__title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #292929;
+}
+
+.findticket__list {
+  display: flex;
+  flex-direction: column;
+}

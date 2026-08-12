@@ -1,0 +1,53 @@
+.ticket-seats__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ticket-seat {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.ticket-seat__type {
+  font-size: 16px;
+  font-weight: 400;
+  color: #3E3C41;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.ticket-seat__count {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFA800;
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.ticket-seat__price-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.ticket-seat__price-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+.ticket-seat__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2D2B2F;
+}
+
+.ticket-seat__rub-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}

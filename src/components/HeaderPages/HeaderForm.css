@@ -1,0 +1,23 @@
+.header-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.header-form-forma {
+    display: flex;
+    flex-direction: column; 
+    gap: 47px;
+    margin-top: 111px;
+    padding: 28px 42px 76px;
+    background-color: rgba(41, 41, 41, 0.69);
+}
+
+.header-form-top {
+    display: flex;
+    gap: 35px;
+}
+
+.header-form-bottom {
+    display: flex;
+    justify-content: flex-end;
+}

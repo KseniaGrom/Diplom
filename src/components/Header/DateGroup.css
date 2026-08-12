@@ -1,0 +1,48 @@
+.date-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 2;
+  min-width: 200px;
+  align-items: flex-start;
+}
+
+.date-group__label {
+  font-size: 30px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 1);
+}
+
+.date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.date-inputs__field {
+  flex: 1;
+  padding: 19px 70px 11px 21px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+  color: #292929;
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.date-inputs__field::placeholder {
+  color: #E5E5E5;
+}
+
+.date__input-wrapper{
+  position: relative;
+  flex: 1;
+}
+
+.date__input-icon {
+  position: absolute;
+  right: 10px;
+  top: 20%;
+  pointer-events: none;
+}

@@ -1,0 +1,122 @@
+.side-cost {
+  padding: 37px 34px 32px 30px;
+}
+
+.side-cost__title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.side-cost__values {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.side-cost__value {
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.side-cost__slider-wrapper {
+  position: relative;
+  padding: 4px 0;
+}
+
+.side-cost__slider-track {
+  position: relative;
+  height: 19px;
+  background: none;
+  border-radius: 8px;
+  border: 1px solid #C4C4C4;
+}
+
+.side-cost__slider-fill {
+  position: absolute;
+  height: 100%;
+  background: #FFA800;
+  border-radius: 8px;
+  top: 0;
+}
+
+.side-cost__range-inputs {
+  position: relative;
+  height: 50px;
+  margin-top: -27px;
+}
+
+.side-cost__range {
+  position: absolute;
+  width: 100%;
+  height: 24px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+  margin: 0;
+  top: 0;
+}
+
+.side-cost__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 0;
+}
+
+.side-cost__range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.side-cost__range-label {
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.side-cost__range-label--min {
+  left: 0;
+  color: #E5E5E5;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.side-cost__range-label--max {
+  right: 0;
+  color: #E5E5E5;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.side-cost__thumb-value {
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #E5E5E5;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.side-cost__thumb-value--max {
+  transform: translateX(-50%);
+}

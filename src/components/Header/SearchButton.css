@@ -1,0 +1,25 @@
+.search-button {
+  padding: 16px 68px;
+  background: #FFA800;
+  border: none;
+  border-radius: 5px;
+  color: #292929;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  height: 60px;
+  align-self: flex-end;
+}
+
+.search-button:hover {
+  background: #FFA800;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.search-button:active {
+  background: #E5E5E5;
+  border: 1px solid #FFA800;
+  border-radius: 5px;
+  color: #FFA800;
+}

@@ -1,0 +1,21 @@
+.ticket-seats {
+  width: 283px;
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  padding: 41px 22px 35px 34px;
+  box-sizing: border-box;
+}
+
+.ticket-seats__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.ticket-seats__icon {
+  width: 92px;
+  height: 20px;
+}

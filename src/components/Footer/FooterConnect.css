@@ -1,0 +1,34 @@
+.footer-connect-h2 {
+    font-size: 30px;
+    font-weight: 500;
+    height: 61px;
+    color: #FFFFFF;
+}
+
+.footer-connect-links{
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    flex-direction: column;
+    padding: 0;
+    width: 346px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-connect-links__item {
+    font-size: 27px;
+    display: flex;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    align-items: flex-start;    
+}
+
+.footer-connect-links__icon {
+    padding-right: 36px;
+}

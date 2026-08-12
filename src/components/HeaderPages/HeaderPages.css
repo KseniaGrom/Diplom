@@ -1,0 +1,9 @@
+.header-pages {
+  background-image: url('../../images/HeaderPages/HeaderPages.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.69);
+  width: 100%;
+}

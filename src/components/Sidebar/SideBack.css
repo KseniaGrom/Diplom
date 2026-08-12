@@ -1,0 +1,182 @@
+.sideback {
+    padding: 27px 37px 34px 32px;
+}
+
+.sideback-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sideback-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.sideback__text {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    flex: 1;
+}
+
+.sideback__icon {
+    width: 32px;
+    height: 26px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sideback__icon--right {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+}
+
+.sideback__icon--plus {
+    display: inline-block;
+    background-image: url('../../Images/SideThere/pluse.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sideback__icon--plus:hover {
+    background-image: url('../../Images/SideThere/plus-hover.png');
+}
+
+.sideback__icon--plus:active {
+    background-image: url('../../Images/SideThere/plus-act.png');
+}
+
+.sideback__icon--plus--open {
+    background-image: url('../../Images/SideThere/plus-act.png');
+}
+
+/* ★ РАСШИРЕННАЯ СЕКЦИЯ ★ */
+.sideback__expand {
+    margin-top: 16px;
+    padding: 22px 0 46px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ★ СЛАЙДЕР ★ */
+.sideback__slider-values {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.sideback__slider-values--arrival {
+    margin-top: 24px;
+}
+
+.sideback__value {
+    font-size: 24px;
+    font-weight: 400;
+    color: #E5E5E5;
+}
+
+.sideback__slider-wrapper {
+    position: relative;
+    padding: 12px 0;          /* ← увеличен для кружков */
+}
+
+.sideback__slider-track {
+    position: relative;
+    height: 10px;
+    background: none;
+    border-radius: 8px;
+    border: 1px solid #C4C4C4;
+}
+
+.sideback__slider-fill {
+    position: absolute;
+    height: 100%;
+    background: #FFA800;
+    border-radius: 8px;
+    top: 0;
+}
+
+.sideback__range-inputs {
+    position: relative;
+    height: 24px;             /* ← как высота кружка */
+    margin-top: -28px;        /* ← поднимаем на дорожку */
+}
+
+.sideback__range {
+    position: absolute;
+    width: 100%;
+    height: 18px;             /* ← высота кружка */
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    pointer-events: none;
+    margin: 0;
+    top: -6px;
+}
+
+.sideback__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin-top: -18px;
+}
+
+.sideback__range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sideback__range-label {
+    position: absolute;
+    bottom: -4px;             /* ← опускаем подписи */
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.sideback__range-label--min {
+    left: 0;
+    color: #E5E5E5;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sideback__range-label--max {
+    right: 0;
+    color: #E5E5E5;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sideback__thumb-value {
+    position: absolute;
+    bottom: -4px;             /* ← опускаем значения под кружками */
+    font-size: 16px;
+    font-weight: 400;
+    color: #E5E5E5;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.sideback__thumb-value--max {
+    transform: translateX(-50%);
+}

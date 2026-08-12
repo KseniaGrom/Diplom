@@ -1,0 +1,23 @@
+.ticket-point {
+  display: flex;
+  flex-direction: column;
+  width: 155px;
+}
+
+.ticket-point__time {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.ticket-point__city {
+  font-size: 18px;
+  font-weight:400;
+  color: #000000;
+}
+
+.ticket-point__station {
+  font-size: 18px;
+  font-weight: 400;
+  color: #928F94;
+}

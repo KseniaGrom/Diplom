@@ -1,0 +1,11 @@
+.sidebar {
+    width: 360px;
+    background-color: #3E3C41;
+    margin-left: 258px;
+}
+
+.sidebar-row {
+    width: 100%;
+    height: 1px;
+    background-color: #E5E5E5;
+}

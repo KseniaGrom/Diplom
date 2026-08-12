@@ -1,0 +1,39 @@
+.about-us__container{
+  padding: 144px 0 115px 258px;
+  background-color: #FFFFFF;
+}
+
+.about-us__title {
+  font-weight: 500;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.about-us__wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 18px; 
+  width: 1320px;
+}
+
+.about-us__bar {
+  width: 8px;
+  height: 231px;
+  background-color: #FFA800;
+}
+
+.about-us__text {
+  display: flex;
+  flex-direction: column;  
+  gap: 23px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #292929;
+  padding-right: 150px;
+}
+
+.about-us__highlight {
+    font-weight: 700;
+}

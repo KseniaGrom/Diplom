@@ -1,0 +1,22 @@
+.buttonSub-button {
+    width: 169px;
+    height: 60px;
+    background: none;
+    border: 1px solid #FFFFFF;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #E5E5E5;
+}
+
+.buttonSub-button:hover {
+    background-color: #FFCA62;
+    color: #2D2B2F;
+    border: none;
+}
+
+.buttonSub-button:active {
+    background-color: #FFFFFF;
+    color: #2D2B2F;
+    border: none;
+}
