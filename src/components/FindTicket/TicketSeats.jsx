@@ -4,7 +4,7 @@ import TicketSeat from './TicketSeat';
 import TicketButton from './TicketButton';
 import TicketIcon from '../../Images/ticketIcon.png';
 
-function TicketSeats({ seats }) {
+function TicketSeats({ seats, ticket }) {
   return (
     <div className="ticket-seats">
       <div className="ticket-seats__list">
@@ -18,7 +18,7 @@ function TicketSeats({ seats }) {
           alt="билет" 
           className="ticket-seats__icon" 
         />
-        <TicketButton />
+        <TicketButton ticket={ticket} />
       </div>
     </div>
   );

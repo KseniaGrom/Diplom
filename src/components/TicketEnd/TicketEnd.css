@@ -1,0 +1,20 @@
+.ticketend {
+}
+
+.ticketend__change-container {
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px 0px #00000040;
+    background: #FFFFFF;
+    margin-top: 29px;
+    margin-left: 82px;
+    padding-top: 29px;
+}
+
+.ticketend__change-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    justify-content: flex-end;
+    margin-right: 24px;
+}

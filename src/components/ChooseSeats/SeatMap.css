@@ -1,0 +1,12 @@
+.seat-map {
+  width: 100%;
+}
+
+.seat-map__image-container {
+  padding-bottom: 73px;
+  
+}
+
+.seat-map__image {
+  padding: 0 18px 25px 20px;
+}

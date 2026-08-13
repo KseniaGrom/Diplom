@@ -1,0 +1,29 @@
+.tickedend-btn {
+  display: flex;
+  align-items: center;
+  padding: 16px 34px;
+  background: none;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #292929;
+  cursor: pointer;
+}
+
+.tickedend-btn:hover {
+  color: #FFA800;
+}
+
+.tickedend-btn:active {
+  background-color: #FFA800;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  color: #292929;
+  border-color: #FFA800;
+}
+
+.tickedend-btn__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}

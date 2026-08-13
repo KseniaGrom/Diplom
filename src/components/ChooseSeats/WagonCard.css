@@ -1,0 +1,83 @@
+.wagon-card {
+  background: #F7F5F9;
+  border: 2px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wagon-card:hover {
+  border-color: #FFA800;
+}
+
+.wagon-card--active {
+  border-color: #FFA800;
+  background: #FFF8E8;
+}
+
+.wagon-card__header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.wagon-card__number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFA800;
+}
+
+.wagon-card__label {
+  font-size: 14px;
+  color: #928F94;
+}
+
+.wagon-card__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 8px 0 12px 0;
+  padding: 12px 0;
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.wagon-card__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.wagon-card__label {
+  font-size: 14px;
+  color: #928F94;
+}
+
+.wagon-card__value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #292929;
+}
+
+.wagon-card__value--price {
+  color: #FFA800;
+}
+
+.wagon-card__seats {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #928F94;
+}
+
+.wagon-card__seats b {
+  color: #292929;
+}
+
+.wagon-card__people {
+  font-size: 14px;
+  color: #928F94;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #E5E5E5;
+}

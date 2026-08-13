@@ -3,7 +3,6 @@ import './TicketCard.css';
 import TicketHeader from './TicketHeader';
 import TicketRoute from './TicketRoute';
 import TicketSeats from './TicketSeats';
-import TicketButton from './TicketButton';
 
 function TicketCard({ ticket }) {
   return (
@@ -31,9 +30,7 @@ function TicketCard({ ticket }) {
         )}
       </div>
       
-      <div className="ticket-card__bottom">
-        <TicketSeats seats={ticket.seats} />
-      </div>
+      <TicketSeats seats={ticket.seats} ticket={ticket} />
     </div>
   );
 }

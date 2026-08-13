@@ -1,0 +1,31 @@
+.ticket-route-simple {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%; 
+}
+
+.ticket-route-simple__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #928F94;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.ticket-route-simple__points {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 480px;
+  padding: 0 36px;
+  border-right: 1px solid #FFFFFF;
+  height: 100%;
+}
+
+.ticket-route-simple__arrow {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}

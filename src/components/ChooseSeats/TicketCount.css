@@ -1,0 +1,72 @@
+.ticket-count {
+  background: #FFFFFF;
+  margin-top: 16px;
+  border-bottom: 1px dashed #C4C4C4;
+}
+
+.ticket-count__title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #292929;
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
+
+.ticket-count__wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 49px;
+}
+
+.ticket-count__item {
+  display: flex;
+  gap: 23px;
+  padding: 20px 41px 55px 36px;
+  flex-direction: column;
+  background-color:#FFFFFF;
+  box-sizing: border-box;
+  width: 317px  ;
+}
+
+.ticket-count__item:hover {
+  background-color:#F7F6F6;
+  box-shadow: 0px 2px 2px 0px #00000040;
+}
+
+.ticket-count__item--active {
+  border: 1px solid #FFA800C9;
+}
+
+.ticket-count__item--active .ticket-count__hint {
+  color: #928F94;
+}
+
+.ticket-count-block {
+  height: 50px;
+  width: 240px;
+  border: 1px solid #928F94;
+  border-radius: 5px;
+}
+
+
+.ticket-count-text {
+  padding: 15px 19px 15px 15px
+}
+
+.ticket-count__label {
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.ticket-count__value {
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.ticket-count__hint {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+}
