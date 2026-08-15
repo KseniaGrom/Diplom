@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './Tickets.css';
 import HeaderPages from '../components/HeaderPages/HeaderPages';
 import Sidebar from '../components/Sidebar/Sidebar';
@@ -7,6 +8,20 @@ import ChooseSeats from '../components/ChooseSeats/ChooseSeats';
 import TicketEnd from '../components/TicketEnd/TicketEnd';
 
 function ChoosingPlaces() {
+  const location = useLocation();
+  const { ticket } = location.state || {};
+
+  if (!ticket) {
+    return (
+      <div className="tickets">
+        <HeaderPages currentStep={1} />
+        <div className="tickets__error">
+          <p>Билет не выбран. Вернитесь и выберите билет.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="tickets">
       <HeaderPages currentStep={1} /> 
@@ -16,8 +31,8 @@ function ChoosingPlaces() {
           <LastTicket />
         </div>
         <div>
-        <ChooseSeats />
-        <TicketEnd />
+          <ChooseSeats ticket={ticket} />
+          <TicketEnd ticket={ticket} />
         </div>
       </main>
     </div>

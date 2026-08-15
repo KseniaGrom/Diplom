@@ -8,6 +8,7 @@
     margin-top: 29px;
     margin-left: 82px;
     padding-top: 29px;
+    padding-bottom: 124px;
 }
 
 .ticketend__change-button {
@@ -17,4 +18,12 @@
     margin-left: auto;
     justify-content: flex-end;
     margin-right: 24px;
+}
+
+.ticketend-btn {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-top: 102px;
+    margin-bottom: 122px;
 }
