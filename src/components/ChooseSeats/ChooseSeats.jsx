@@ -12,15 +12,31 @@ import luxMap from '../../Images/SeatMaps/lux-map.png';
 import KypetMap from '../../Images/SeatMaps/coupe-map.png';
 import WagonInfo from './WagonInfo';
 
-function ChooseSeats() {
+function ChooseSeats({ 
+  ticket, 
+  adults: initialAdults = 2, 
+  children: initialChildren = 1, 
+  childrenWithoutSeat: initialChildrenWithoutSeat = 0,
+  onPriceChange 
+}) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { ticket, adults = 2, children = 1, childrenWithoutSeat = 0 } = location.state || {};
+  const { ticket: locationTicket, adults: locationAdults = 2, children: locationChildren = 1, childrenWithoutSeat: locationChildrenWithoutSeat = 0 } = location.state || {};
+
+  const finalTicket = ticket || locationTicket;
+  const finalAdults = ticket ? initialAdults : locationAdults;
+  const finalChildren = ticket ? initialChildren : locationChildren;
+  const finalChildrenWithoutSeat = ticket ? initialChildrenWithoutSeat : locationChildrenWithoutSeat;
 
   const [selectedType, setSelectedType] = useState('Плацкарт');
   const [selectedWagons, setSelectedWagons] = useState([]);
   const [openWagons, setOpenWagons] = useState([]);
   const [firstWagonId, setFirstWagonId] = useState(null);
+  const [adults, setAdults] = useState(finalAdults);
+  const [children, setChildren] = useState(finalChildren);
+  const [childrenWithoutSeat, setChildrenWithoutSeat] = useState(finalChildrenWithoutSeat);
+  const [adultPrice, setAdultPrice] = useState(2020);
+  const [childPrice, setChildPrice] = useState(1010);
 
   const defaultWagonMap = {
     'Сидячий': '22',
@@ -29,24 +45,42 @@ function ChooseSeats() {
     'Люкс': '02'
   };
 
-  // ★ ПРИ СМЕНЕ ТИПА — ОТКРЫВАЕМ НУЖНЫЙ ВАГОН ★
+  const getPriceFromWagon = (wagon) => {
+    if (!wagon) return 2020;
+    if (wagon.priceTop) {
+      return parseInt(String(wagon.priceTop).replace(/\s/g, ''));
+    }
+    if (wagon.price) {
+      return parseInt(String(wagon.price).replace(/\s/g, ''));
+    }
+    return 2020;
+  };
+  
   useEffect(() => {
-    if (ticket) {
-      const wagons = ticket.wagons?.[selectedType] || [];
+    if (finalTicket) {
+      const wagons = finalTicket.wagons?.[selectedType] || [];
       if (wagons.length > 0) {
         const defaultNumber = defaultWagonMap[selectedType];
         let targetWagon = null;
         if (defaultNumber) {
           targetWagon = wagons.find(w => String(w.number) === String(defaultNumber));
         }
-        // ★ ЕСЛИ НАШЛИ НУЖНЫЙ ВАГОН — ОТКРЫВАЕМ ЕГО, ИНАЧЕ ПЕРВЫЙ ★
         const firstId = targetWagon ? targetWagon.id : wagons[0].id;
         setFirstWagonId(firstId);
         setSelectedWagons([firstId]);
         setOpenWagons([firstId]);
+
+        const activeWagon = targetWagon || wagons[0];
+        const price = getPriceFromWagon(activeWagon);
+        setAdultPrice(price);
+        setChildPrice(Math.round(price * 0.5));
+        
+        if (onPriceChange) {
+          onPriceChange(price, Math.round(price * 0.5));
+        }
       }
     }
-  }, [ticket, selectedType]);
+  }, [finalTicket, selectedType]);
 
   const handleWagonSelect = (wagonId) => {
     if (wagonId === firstWagonId) return;
@@ -61,7 +95,13 @@ function ChooseSeats() {
     });
   };
 
-  if (!ticket) {
+  const handleTicketCountSelect = (data) => {
+    setAdults(data.adults);
+    setChildren(data.children);
+    setChildrenWithoutSeat(data.childrenWithoutSeat);
+  };
+
+  if (!finalTicket) {
     return (
       <div className="choose-seats__error">
         <p>Билет не выбран. Вернитесь и выберите билет.</p>
@@ -73,7 +113,7 @@ function ChooseSeats() {
   }
 
   const wagonTypes = ['Сидячий', 'Плацкарт', 'Купе', 'Люкс'];
-  const currentWagons = ticket.wagons?.[selectedType] || [];
+  const currentWagons = finalTicket.wagons?.[selectedType] || [];
 
   const typeImages = {
     'Сидячий': sittingMap,
@@ -82,19 +122,19 @@ function ChooseSeats() {
     'Люкс': luxMap,
   };
 
-const wagonImages = {
-  '07': KypetMap,
-  '09': KypetMap,
-  '10': platzkartBottomMap,
-  '12': platzkartMap,
-  '15': platzkartMap,
-  '20': sittingMap,
-  '21': sittingMap,
-  '22': sittingMap,
-  '25': sittingMap,
-  '02': luxMap,
-  '05': luxMap,
-};
+  const wagonImages = {
+    '07': KypetMap,
+    '09': KypetMap,
+    '10': platzkartBottomMap,
+    '12': platzkartMap,
+    '15': platzkartMap,
+    '20': sittingMap,
+    '21': sittingMap,
+    '22': sittingMap,
+    '25': sittingMap,
+    '02': luxMap,
+    '05': luxMap,
+  };
 
   const getWagonImage = (wagon) => {
     if (!wagon) return null;
@@ -108,11 +148,12 @@ const wagonImages = {
     <div className="choose-seats">
       <h2 className="choose-seats-h2">Выбор мест</h2>
       <div className="choose-seats__left">
-        <TrainInfo ticket={ticket} />
+        <TrainInfo ticket={finalTicket} />
         <TicketCount 
           adults={adults} 
           children={children} 
           childrenWithoutSeat={childrenWithoutSeat} 
+          onSelect={handleTicketCountSelect}
         />
         <WagonType 
           types={wagonTypes} 
@@ -152,7 +193,6 @@ const wagonImages = {
             {selectedWagons.map((wagonId) => {
               const wagonData = currentWagons.find(w => w.id === wagonId);
               if (!wagonData) return null;
-              
               if (!openWagons.includes(wagonId)) return null;
               
               return (
@@ -166,6 +206,11 @@ const wagonImages = {
                     wagonType={selectedType}
                     wagon={wagonData}
                     wagonImage={getWagonImage(wagonData)}
+                    adults={adults}
+                    children={children}
+                    childrenWithoutSeat={childrenWithoutSeat}
+                    adultPrice={adultPrice}
+                    childPrice={childPrice}
                   />
                 </div>
               );

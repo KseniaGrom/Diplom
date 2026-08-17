@@ -1,0 +1,112 @@
+.passenger-info {
+  background-color: #3E3C41;
+  overflow: hidden;
+}
+
+.passenger-info__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 27px 33px 29px;
+}
+
+.passenger-info__title-group {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.passenger-info__icon {
+  width: 26px;
+  height: 26px;
+}
+
+.passenger-info__title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.passenger-info__total-price {
+  font-size: 30px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.passenger-info__toggle-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.passenger-info__toggle-icon:hover {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(37%) saturate(687%) hue-rotate(313deg) brightness(101%) contrast(98%);
+}
+
+.passenger-info__body {
+  padding: 0 28px 24px;
+}
+
+.passenger-info__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.passenger-info__item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.passenger-info__item-label {
+  font-size: 18px;
+  font-weight: 400;
+  color: #E5E5E5;
+}
+
+.passenger-info__item-count {
+  font-size: 18px;
+  font-weight: 400;
+  color: #E5E5E5;
+}
+
+.passenger-info__item-right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.passenger-info__item-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.passenger-info__rub-icon{
+    width: 14px;
+    height: 17px;
+}
+
+.passenger-info__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.passenger-info__total-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.passenger-info__total-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFA800;
+}

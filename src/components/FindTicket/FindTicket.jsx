@@ -31,9 +31,9 @@ function FindTicket() {
       { id: 4, number: '25', seats: 35, price: '1 920', service: 'ФПК', people: 9, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: true, active: true } } }
     ],
     'Плацкарт': [
-      { id: 5, number: '10', seats: 22, priceTop: '2 920', priceBottom: '3 530', service: 'ОТК', top: 10, bottom: 12, people: 13, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } },
+      { id: 5, number: '10', seats: 22, priceTop: '2 020', priceBottom: '3 530', service: 'ОТК', top: 10, bottom: 12, people: 13, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } },
       { id: 6, number: '12', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ФПК', top: 10, bottom: 12, people: 13, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } },
-      { id: 7, number: '15', seats: 21, price: '2 020', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { bedding: { included: false, active: false }, conditioner: { included: true, active: true }, wifi: { included: false, active: false }, tea: { included: false, active: false } } }
+      { id: 7, number: '15', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { bedding: { included: false, active: false }, conditioner: { included: true, active: true }, wifi: { included: false, active: false }, tea: { included: false, active: false } } }
     ],
     'Купе': [
       { id: 8, number: '07', seats: 11, priceTop: '2 920', priceBottom: '3 530', service: 'ФПК', top: 3, bottom: 8, people: 11, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: true, active: true } } },

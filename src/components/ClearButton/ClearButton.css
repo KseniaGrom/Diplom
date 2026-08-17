@@ -1,0 +1,21 @@
+.clearbutton {
+    background-color: #FFFFFF;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    color: #292929;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 11px 68px;
+    cursor: pointer;
+}
+
+.clearbutton:hover {
+    color: #FFA800;
+}
+
+.clearbutton:active {
+    background-color: #FFA800;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    color: #292929;
+    border: none;
+}

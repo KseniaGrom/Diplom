@@ -1,12 +1,99 @@
 .seat-map {
   width: 100%;
+  position: relative;
+}
+
+.seat-map__people {
+  background-color: #F3F3F3;
+  width: 199px;
+  margin-left: auto;
+  padding: 16px 13px;
+  border-radius: 5px;
+  margin-right: 42px;
+  margin-bottom: 12px;
+}
+
+.seat-map__people-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #292929;
+  display: block;
+  text-align: center;
 }
 
 .seat-map__image-container {
-  padding-bottom: 73px;
-  
+  position: relative;
+  width: 100%;
+  padding: 0 18px 25px 20px;
+  box-sizing: border-box;
+}
+
+.seat-map__image-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
 }
 
 .seat-map__image {
-  padding: 0 18px 25px 20px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.seat-map__seat-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+  user-select: none;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.seat-map__seat-overlay--selected {
+  border: 2px solid #FFA800;
+}
+
+.seat-map__seat-overlay--empty {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #C4C4C4;
+}
+
+.seat-map__seat-overlay--empty:hover {
+  background: rgba(255, 168, 0, 0.3);
+  border-color: #FFA800;
+}
+
+
+.seat-map__price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  padding-right: 38px;
+  margin-top: 12px;
+}
+
+.seat-map__price-text {
+  font-size: 16px;
+  color: #928F94;
+}
+
+.seat-map__price-value {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.seat-map__price-amount {
+  color: #FFA800;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.seat-map__rub-icon {
+  width: 14px;
+  height: 17px;
 }

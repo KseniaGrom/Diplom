@@ -17,7 +17,7 @@ function HeaderRow({ currentStep = 1 }) {
   };
 
   return (
-    <div className="header-row">
+    <div className="headerrow-row">
       <div 
         className="header-row__background" 
         style={{ width: getWidth() }}

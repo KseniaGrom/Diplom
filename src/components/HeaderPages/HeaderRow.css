@@ -1,4 +1,4 @@
-.header-row {
+.headerrow-row {
     height: 98px;
     background-color: #3E3C41;
     display: flex;
@@ -120,7 +120,6 @@
     background: #E5E5E5;
     transform: translateX(-16px) rotate(-37deg);
     transform-origin: top right;
-    transition: background 0.3s ease;
 }
 
 .header-row__corner::after {
@@ -133,5 +132,4 @@
     background: #E5E5E5;
     transform: translateX(-16px) rotate(37deg);
     transform-origin: bottom right;
-    transition: background 0.3s ease;
 }

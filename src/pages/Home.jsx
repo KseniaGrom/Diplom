@@ -3,7 +3,6 @@ import Header from '../components/Header/Header';
 import About from '../components/About/About';
 import HowWork from '../components/HowWork/HowWork';
 import Feedback from '../components/Feedback/Feedback';
-import Footer from '../components/Footer/Footer';
 import '../index.css';
 
 function App() {

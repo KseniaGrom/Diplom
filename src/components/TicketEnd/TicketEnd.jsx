@@ -12,6 +12,8 @@ function TicketEnd({
   adults = 2, 
   children = 1, 
   childrenWithoutSeat = 0,
+  adultPrice = 2020,      // ← добавить
+  childPrice = 1010,      // ← добавить
   wagonTypes = ['Сидячий', 'Плацкарт', 'Купе', 'Люкс'],
   selectedType = 'Плацкарт',
   onWagonTypeSelect = () => {}
@@ -42,7 +44,14 @@ function TicketEnd({
         />
       </div>
       <div className="ticketend-btn">
-        <TicketEndButn />
+          <TicketEndButn 
+            ticket={ticket}
+            adults={adults}
+            children={children}
+            childrenWithoutSeat={childrenWithoutSeat}
+            adultPrice={adultPrice}
+            childPrice={childPrice}
+          />
       </div>
     </div>
   );

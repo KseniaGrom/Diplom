@@ -6,7 +6,6 @@ import trainIcon from '../../Images/train-orange.png';
 import TicketRouteSimple from '../ChooseSeats/TicketRouteSimple';
 
 function TrainInfoRow({ ticket }) {
-  // ★ ПРОВЕРКА: ЕСЛИ БИЛЕТА НЕТ — НЕ РЕНДЕРИМ ★
   if (!ticket) {
     return null;
   }

@@ -1,0 +1,45 @@
+.error {
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+.error-container {
+    margin: 0 auto;
+    width: 665px;
+    box-shadow: 0px 2px 2px 0px #00000040;
+    border: 1px solid #C4C4C4;
+}
+
+.error-head {
+    background-color: rgba(255, 61, 0, 0.38);
+    display: flex;
+    justify-content: flex-start;
+    padding: 41px 0 34px 38px;
+    border-bottom: 1px dashed #928F94;
+}
+
+.error-content {
+    padding: 46px 24px 25px 47px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px dashed #928F94;
+}
+
+.error-text-top {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.error-text {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.error-button {
+    margin-top: 31px;
+    margin-bottom: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
