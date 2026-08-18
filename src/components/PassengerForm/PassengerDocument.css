@@ -1,0 +1,109 @@
+.passenger-document {
+  display: flex;
+  gap: 35px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.passenger-document__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.passenger-document__label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+.passenger-document__input-wrapper {
+  position: relative;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.passenger-document__input-wrapper:focus-within {
+  border-color: #FFA800;
+}
+
+.passenger-document__input {
+  position: relative;
+  z-index: 2;
+  padding: 12px 51px 15px 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #292929;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.passenger-document__input:focus {
+  outline: none;
+}
+
+.passenger-document__input::placeholder {
+  color: transparent;
+}
+
+.passenger-document__input-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 12px 12px 9px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.passenger-document__placeholder-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #C4C4C4;
+}
+
+.passenger-document__underlines {
+  font-size: 18px;
+  font-weight: 400;
+  color: #C4C4C4;
+  letter-spacing: 6px;
+}
+
+.passenger-document__select-custom {
+  width: 100%;
+  min-width: 205px;
+}
+
+.passenger-document__select-custom .custom-select__header {
+  padding: 10px 11px 12px 13px;
+  height: 50px;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.passenger-document__select-custom .custom-select__value {
+  font-size: 18px;
+}
+
+.passenger-document__select-custom .custom-select__option {
+  font-size: 18px;
+  padding: 10px 13px 12px 13px;
+}
+
+.passenger-document__select-custom .custom-select__dropdown {
+  border-radius: 5px;
+}

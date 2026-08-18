@@ -1,0 +1,33 @@
+.passenger-add-button {
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px 0px #00000040;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  margin-bottom: 103px;
+}
+
+.passenger-add-button:hover {
+  border-color: #FFA800;
+}
+
+.passenger-add-button__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 37px 32px 26px;
+}
+
+.passenger-add-button__right {
+  display: flex;
+  align-items: center;
+}
+
+.passenger-add-button__title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.passenger-add-button:hover .passenger-add-button__title {
+  color: #FFA800;
+}

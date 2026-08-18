@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './Passengers.css';
 import HeaderPages from '../components/HeaderPages/HeaderPages';
 import TripDetails from '../components/TripDetails/TripDetails';
+import PassengerForm from '../components/PassengerForm/PassengerForm';
 import Error from '../components/Error/Error';
 
 function Passengers() {
@@ -17,6 +18,8 @@ function Passengers() {
     childPrice = 1010
   } = location.state || {};
 
+  console.log('Passengers ticket:', ticket);
+
   if (!ticket) {
     return (
       <Error 
@@ -25,8 +28,6 @@ function Passengers() {
       />
     );
   }
-
-  console.log('Passengers получил:', { ticket, adults, children, childrenWithoutSeat, adultPrice, childPrice });
 
   return (
     <div className="passengers">
@@ -43,12 +44,14 @@ function Passengers() {
           />
         </div>
         <div className="passengers__right">
-          {/* Форма с пассажирами */}
-          <p>Взрослых: {adults}</p>
-          <p>Детских: {children}</p>
-          <p>Без места: {childrenWithoutSeat}</p>
-          <p>Цена взрослого: {adultPrice}</p>
-          <p>Цена детского: {childPrice}</p>
+          <PassengerForm 
+            ticket={ticket}
+            adults={adults}
+            children={children}
+            childrenWithoutSeat={childrenWithoutSeat}
+            adultPrice={adultPrice}
+            childPrice={childPrice}
+          />
         </div>
       </main>
     </div>

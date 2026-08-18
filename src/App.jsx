@@ -5,6 +5,7 @@ import Tickets from './pages/Tickets';
 import ChoosingPlaces from './pages/ChoosingPlaces';
 import Passengers from './pages/Passengers';
 import Footer from './components/Footer/Footer';
+import Pay from './pages/Pay';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tickets" element={<Tickets />} />
           <Route path="/choosingplaces" element={<ChoosingPlaces />} />
-          <Route path="/Passengers" element={<Passengers />} />
+          <Route path="/passengers" element={<Passengers />} />
+          <Route path="/pay" element={<Pay />} />
         </Routes>
         <Footer />
       </div>

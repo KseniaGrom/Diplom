@@ -1,0 +1,136 @@
+.passenger-personal-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 51px;
+}
+
+.passenger-personal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.passenger-personal__label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+.passenger-personal__input {
+  padding: 14px 15px 6px 20px;
+  border: 1px solid #928F94;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+  background: #FFFFFF;
+  width: 240px;
+  box-sizing: border-box;
+}
+
+.passenger-personal__input::placeholder {
+  color: #C4C4C4;
+}
+
+.passenger-personal__gender {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  margin-bottom: 45px;
+}
+
+.passenger-personal__gender-options {
+  display: flex;
+}
+
+.passenger-personal__gender-btn {
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 33px 5px 36px;
+  border: 1px solid #928F94;
+  background: #FFFFFF;
+  font-size: 30px;
+  font-weight: 900;
+  color: #000000;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.passenger-personal__gender-btn:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.passenger-personal__gender-btn:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.passenger-personal__gender-btn:not(:last-child) {
+  border-right: none;
+}
+
+.passenger-personal__gender-btn:hover {
+  border-color: #FFA800;
+  color: #FFA800;
+}
+
+.passenger-personal__gender-btn--active {
+  background: #FFA800;
+}
+
+.passenger-personal__gender-btn--active:hover {
+  color: #000;
+}
+
+.passenger-personal__checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.passenger-personal__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.passenger-personal__checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928F94;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+  position: relative;
+}
+
+.passenger-personal__checkbox-input:hover {
+  border-color: #FFA800;
+}
+
+.passenger-personal__checkbox-input:checked {
+  background: #FFA800;
+  border-color: #FFA800;
+}
+
+.passenger-personal__checkbox-input:checked::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 9px;
+  width: 6px;
+  height: 12px;
+  border: solid #FFFFFF;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.passenger-personal__checkbox label {
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+}

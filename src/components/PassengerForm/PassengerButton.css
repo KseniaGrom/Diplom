@@ -1,0 +1,25 @@
+.passenger-next-button {
+  width: 303px;
+  height: 52px;
+  background: #FFFFFF;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #292929;
+  cursor: pointer;
+  margin: 37px 31px 28px 0;
+  box-sizing: border-box;
+}
+
+.passenger-next-button:hover {
+  color: #FFA800;
+  box-shadow: 0px 4px 4px 0px #00000040;
+
+}
+
+.passenger-next-button:active {
+  background-color: #FFA800;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  color: #292929;
+}
