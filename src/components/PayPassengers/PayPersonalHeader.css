@@ -1,0 +1,17 @@
+.pay-personal-header {
+  border-bottom: 1px dashed #928F94;
+  border-top: 1px dashed #928F94;
+  width: 100%;
+  background-color: #F9F9F9;
+}
+
+.pay-personal-header--no-top {
+  border-top: none;
+}
+
+.pay-personal-header__title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+  padding: 35px 0 36px 35px;
+}

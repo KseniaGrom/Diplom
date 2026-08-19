@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './Pay.css';
 import HeaderPages from '../components/HeaderPages/HeaderPages';
 import TripDetails from '../components/TripDetails/TripDetails';
+import PayPassengers from '../components/PayPassengers/PayPassengers';
 import Error from '../components/Error/Error';
 
 function Pay() {
@@ -21,7 +22,6 @@ function Pay() {
   } = state;
 
   console.log('Pay state:', state);
-  console.log('passengerData:', passengerData);
 
   if (!ticket) {
     return (
@@ -33,8 +33,10 @@ function Pay() {
   }
 
   return (
+    
     <div className="pay">
       <HeaderPages currentStep={3} />
+      
       <main className="pay__main">
         <div className="pay__left">
           <TripDetails 
@@ -46,24 +48,17 @@ function Pay() {
             childPrice={childPrice}
           />
         </div>
+
         <div className="pay__right">
-          <h2>Данные пассажиров</h2>
-          
-          {passengerData && Object.keys(passengerData).length > 0 ? (
-            Object.entries(passengerData).map(([index, data]) => (
-              <div key={index} className="pay__passenger">
-                <p>
-                  <strong>Пассажир {index}:</strong> 
-                  {data.surname || ''} {data.name || ''} {data.patronymic || ''}
-                </p>
-                <p>Дата рождения: {data.birthDate || '—'}</p>
-                <p>Тип: {data.docType || '—'}</p>
-                <hr />
-              </div>
-            ))
-          ) : (
-            <p>Нет данных о пассажирах</p>
-          )}
+          <PayPassengers 
+            passengerData={passengerData}
+            ticket={ticket}
+            adults={adults}
+            children={children}
+            childrenWithoutSeat={childrenWithoutSeat}
+            adultPrice={adultPrice}
+            childPrice={childPrice}
+          />
         </div>
       </main>
     </div>

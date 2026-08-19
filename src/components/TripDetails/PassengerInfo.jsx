@@ -6,11 +6,11 @@ import passengerIcon from '../../Images/passenger.png';
 import rubIcon from '../../Images/rubl.png';
 
 function PassengerInfo({ 
-  adults = 2, 
-  children = 1, 
+  adults = 0, 
+  children = 0, 
   childrenWithoutSeat = 0,
-  adultPrice = 2020,
-  childPrice = 1010
+  adultPrice = 0,
+  childPrice = 0
 }) {
   const [isExpanded, setIsExpanded] = useState(true);
 
@@ -21,24 +21,39 @@ function PassengerInfo({
   const totalAdultsPrice = adults * adultPrice;
   const totalChildrenPrice = children * childPrice;
   const totalPrice = totalAdultsPrice + totalChildrenPrice;
+  const totalPassengers = adults + children + childrenWithoutSeat;
+
+  if (totalPassengers === 0) {
+    return (
+      <div className="passenger-info">
+        <div className="passenger-info__header" onClick={toggleExpand}>
+          <div className="passenger-info__title-group">
+            <img src={passengerIcon} alt="Пассажиры" className="passenger-info__icon" />
+            <span className="passenger-info__title">Пассажиры</span>
+            <span className="passenger-info__total-count">(0)</span>
+          </div>
+          <div className="passenger-info__toggle">
+            <img src={isExpanded ? minusIcon : plusIcon} alt="toggle" className="passenger-info__toggle-icon" />
+          </div>
+        </div>
+        {isExpanded && (
+          <div className="passenger-info__body">
+            <div className="passenger-info__empty">Нет выбранных пассажиров</div>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="passenger-info">
       <div className="passenger-info__header" onClick={toggleExpand}>
         <div className="passenger-info__title-group">
-          <img 
-            src={passengerIcon} 
-            alt="Пассажиры" 
-            className="passenger-info__icon" 
-          />
+          <img src={passengerIcon} alt="Пассажиры" className="passenger-info__icon" />
           <span className="passenger-info__title">Пассажиры</span>
         </div>
         <div className="passenger-info__toggle">
-          <img 
-            src={isExpanded ? minusIcon : plusIcon} 
-            alt={isExpanded ? 'свернуть' : 'развернуть'} 
-            className="passenger-info__toggle-icon"
-          />
+          <img src={isExpanded ? minusIcon : plusIcon} alt="toggle" className="passenger-info__toggle-icon" />
         </div>
       </div>
 

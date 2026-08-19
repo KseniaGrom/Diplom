@@ -26,7 +26,6 @@ function Error({ onClose, onHome }) {
 
   return (
     <div className="error">
-      <HeaderPages />
       <div className="error-container">
         <div className="error-head">
           <img

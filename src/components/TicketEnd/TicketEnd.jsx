@@ -12,14 +12,12 @@ function TicketEnd({
   adults = 2, 
   children = 1, 
   childrenWithoutSeat = 0,
-  adultPrice = 2020,      // ← добавить
-  childPrice = 1010,      // ← добавить
+  adultPrice = 2020,
+  childPrice = 1010,
   wagonTypes = ['Сидячий', 'Плацкарт', 'Купе', 'Люкс'],
   selectedType = 'Плацкарт',
   onWagonTypeSelect = () => {}
 }) {
-  console.log('TicketEnd ticket:', ticket);
-
   if (!ticket) {
     return <div>Загрузка данных о поезде...</div>;
   }
@@ -44,14 +42,14 @@ function TicketEnd({
         />
       </div>
       <div className="ticketend-btn">
-          <TicketEndButn 
-            ticket={ticket}
-            adults={adults}
-            children={children}
-            childrenWithoutSeat={childrenWithoutSeat}
-            adultPrice={adultPrice}
-            childPrice={childPrice}
-          />
+        <TicketEndButn 
+          ticket={ticket}
+          adults={adults}
+          children={children}
+          childrenWithoutSeat={childrenWithoutSeat}
+          adultPrice={adultPrice}
+          childPrice={childPrice}
+        />
       </div>
     </div>
   );

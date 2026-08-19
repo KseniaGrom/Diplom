@@ -5,6 +5,7 @@ import TrainInfo from './TrainInfo';
 import TicketCount from './TicketCount';
 import WagonType from './WagonType';
 import SeatMap from './SeatMap';
+import TicketEnd from '../TicketEnd/TicketEnd';
 import platzkartMap from '../../Images/SeatMaps/platzkart-map.png';
 import platzkartBottomMap from '../../Images/SeatMaps/platzkart-bottom.png';
 import sittingMap from '../../Images/SeatMaps/sitting-map.png';
@@ -37,6 +38,7 @@ function ChooseSeats({
   const [childrenWithoutSeat, setChildrenWithoutSeat] = useState(finalChildrenWithoutSeat);
   const [adultPrice, setAdultPrice] = useState(2020);
   const [childPrice, setChildPrice] = useState(1010);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   const defaultWagonMap = {
     'Сидячий': '22',
@@ -101,6 +103,17 @@ function ChooseSeats({
     setChildrenWithoutSeat(data.childrenWithoutSeat);
   };
 
+  const handleSeatsSelected = (seats) => {
+    setSelectedSeats(seats);
+
+    const adultCount = seats.filter(s => s.type === 'adult').length;
+    setAdults(adultCount);
+  };
+
+  const handleWagonTypeSelect = (type) => {
+    setSelectedType(type);
+  };
+
   if (!finalTicket) {
     return (
       <div className="choose-seats__error">
@@ -147,75 +160,92 @@ function ChooseSeats({
   return (
     <div className="choose-seats">
       <h2 className="choose-seats-h2">Выбор мест</h2>
-      <div className="choose-seats__left">
-        <TrainInfo ticket={finalTicket} />
-        <TicketCount 
-          adults={adults} 
-          children={children} 
-          childrenWithoutSeat={childrenWithoutSeat} 
-          onSelect={handleTicketCountSelect}
-        />
-        <WagonType 
-          types={wagonTypes} 
-          selected={selectedType} 
-          onSelect={setSelectedType} 
-        />
+      <div className="choose-seats__container">
+        <div className="choose-seats__left">
+          <TrainInfo ticket={finalTicket} />
+          <TicketCount 
+            adults={adults} 
+            children={children} 
+            childrenWithoutSeat={childrenWithoutSeat} 
+            onSelect={handleTicketCountSelect}
+          />
+          <WagonType 
+            types={wagonTypes} 
+            selected={selectedType} 
+            onSelect={handleWagonTypeSelect} 
+          />
 
-        <div className="choose-seats__wagon-block">
-          <div className="choose-seats__wagon-block-header">
-            <div className="choose-seats__wagon-block-left">
-              <span className="choose-seats__wagon-block-title">Вагоны</span>
-              <div className="choose-seats__wagon-numbers">
-                {currentWagons.map((wagon) => (
-                  <div
-                    key={wagon.id}
-                    className={`choose-seats__wagon-number-btn ${selectedWagons.includes(wagon.id) ? 'choose-seats__wagon-number-btn--active' : ''}`}
-                    onClick={() => handleWagonSelect(wagon.id)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        handleWagonSelect(wagon.id);
-                      }
-                    }}
-                  >
-                    {wagon.number}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <span className="choose-seats__wagon-block-hint">
-              Нумерация вагонов начинается с головы поезда
-            </span>
-          </div>
-          
-          <div className="choose-seats__wagons-list">
-            {selectedWagons.map((wagonId) => {
-              const wagonData = currentWagons.find(w => w.id === wagonId);
-              if (!wagonData) return null;
-              if (!openWagons.includes(wagonId)) return null;
-              
-              return (
-                <div key={wagonId} className="choose-seats__wagon-scheme">
-                  <WagonInfo 
-                    wagon={wagonData} 
-                    wagonType={selectedType}
-                  />
-                  <SeatMap 
-                    key={`seatmap-${wagonData.id}`}
-                    wagonType={selectedType}
-                    wagon={wagonData}
-                    wagonImage={getWagonImage(wagonData)}
-                    adults={adults}
-                    children={children}
-                    childrenWithoutSeat={childrenWithoutSeat}
-                    adultPrice={adultPrice}
-                    childPrice={childPrice}
-                  />
+          <div className="choose-seats__wagon-block">
+            <div className="choose-seats__wagon-block-header">
+              <div className="choose-seats__wagon-block-left">
+                <span className="choose-seats__wagon-block-title">Вагоны</span>
+                <div className="choose-seats__wagon-numbers">
+                  {currentWagons.map((wagon) => (
+                    <div
+                      key={wagon.id}
+                      className={`choose-seats__wagon-number-btn ${selectedWagons.includes(wagon.id) ? 'choose-seats__wagon-number-btn--active' : ''}`}
+                      onClick={() => handleWagonSelect(wagon.id)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          handleWagonSelect(wagon.id);
+                        }
+                      }}
+                    >
+                      {wagon.number}
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+              <span className="choose-seats__wagon-block-hint">
+                Нумерация вагонов начинается с головы поезда
+              </span>
+            </div>
+            
+            <div className="choose-seats__wagons-list">
+              {selectedWagons.map((wagonId) => {
+                const wagonData = currentWagons.find(w => w.id === wagonId);
+                if (!wagonData) return null;
+                if (!openWagons.includes(wagonId)) return null;
+                
+                return (
+                  <div key={wagonId} className="choose-seats__wagon-scheme">
+                    <WagonInfo 
+                      wagon={wagonData} 
+                      wagonType={selectedType}
+                    />
+                    <SeatMap 
+                      key={`seatmap-${wagonData.id}`}
+                      wagonType={selectedType}
+                      wagon={wagonData}
+                      wagonImage={getWagonImage(wagonData)}
+                      adults={adults}
+                      children={children}
+                      childrenWithoutSeat={childrenWithoutSeat}
+                      adultPrice={adultPrice}
+                      childPrice={childPrice}
+                      onSeatsSelected={handleSeatsSelected}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
+        </div>
+
+        <div className="choose-seats__right">
+          <TicketEnd 
+            ticket={finalTicket}
+            adults={adults}
+            children={children}
+            childrenWithoutSeat={childrenWithoutSeat}
+            adultPrice={adultPrice}
+            childPrice={childPrice}
+            wagonTypes={wagonTypes}
+            selectedType={selectedType}
+            onWagonTypeSelect={handleWagonTypeSelect}
+          />
         </div>
       </div>
     </div>

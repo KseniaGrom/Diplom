@@ -8,9 +8,9 @@ function PassengerPersonal({
   name: initialName = '',
   patronymic: initialPatronymic = '',
   birthDate: initialBirthDate = '',
-  gender: initialGender = 'Ж'
+  gender: initialGender = ''
 }) {
-  const [gender, setGender] = useState(initialGender);
+  const [gender, setGender] = useState(initialGender || '');
   const [localSurname, setLocalSurname] = useState(initialSurname);
   const [localName, setLocalName] = useState(initialName);
   const [localPatronymic, setLocalPatronymic] = useState(initialPatronymic);
@@ -47,13 +47,19 @@ function PassengerPersonal({
   const handleDateInput = (e) => {
     const value = e.target.value.replace(/\D/g, '');
     let formatted = '';
-    if (value.length <= 2) {
+    
+    if (value.length === 0) {
+      formatted = '';
+    } else if (value.length <= 2) {
       formatted = value;
     } else if (value.length <= 4) {
       formatted = `${value.slice(0, 2)}.${value.slice(2)}`;
+    } else if (value.length <= 8) {
+      formatted = `${value.slice(0, 2)}.${value.slice(2, 4)}.${value.slice(4)}`;
     } else {
-      formatted = `${value.slice(0, 2)}.${value.slice(2, 4)}.${value.slice(4, 6)}`;
+      formatted = `${value.slice(0, 2)}.${value.slice(2, 4)}.${value.slice(4, 8)}`;
     }
+    
     setLocalBirthDate(formatted);
 
     onDataChange?.({ 
@@ -130,8 +136,8 @@ function PassengerPersonal({
           <input 
             type="text" 
             className="passenger-personal__input" 
-            placeholder="ДД.ММ.ГГ" 
-            maxLength={8}
+            placeholder="ДД.ММ.ГГГГ" 
+            maxLength={10}
             value={localBirthDate}
             onChange={handleDateInput}
           />

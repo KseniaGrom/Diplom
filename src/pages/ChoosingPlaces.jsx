@@ -56,7 +56,6 @@ function ChoosingPlaces() {
             ticket={ticket} 
             onPriceChange={handlePriceChange}
           />
-          <TicketEnd ticket={ticket} />
         </div>
       </main>
     </div>

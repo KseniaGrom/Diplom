@@ -1,0 +1,12 @@
+.check-section-header {
+    height: 95px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #928F94;
+}
+
+.check-section-header__title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+  padding: 28px 0 30px 30px;
+}

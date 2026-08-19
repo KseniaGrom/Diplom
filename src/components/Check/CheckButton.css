@@ -1,0 +1,22 @@
+.check-button {
+    width: 233px;
+    height: 39px;
+    background: #FFFFFF;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #292929;
+    cursor: pointer;
+}
+
+.check-button:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    color: #FFA800;
+}
+
+.check-button:active {
+  border:none;
+  color: #292929;
+  background-color: #FFA800;
+}

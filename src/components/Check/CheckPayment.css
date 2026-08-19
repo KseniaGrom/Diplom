@@ -1,0 +1,22 @@
+.check-payment {
+  background: #F9F9F9;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.check-payment__row {
+  display: flex;
+  gap: 10px;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.check-payment__label {
+  color: #928F94;
+  min-width: 100px;
+}
+
+.check-payment__value {
+  color: #292929;
+  font-weight: 500;
+}

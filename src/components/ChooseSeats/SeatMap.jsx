@@ -15,7 +15,8 @@ function SeatMap({
   children = 0,
   childrenWithoutSeat = 0,
   adultPrice = 2920,
-  childPrice = 1460
+  childPrice = 1460,
+  onSeatsSelected
 }) {
   const getDefaultSeats = () => {
     if (wagonType === 'Люкс') return [7, 8];
@@ -83,11 +84,21 @@ function SeatMap({
   const pricePerSeat = getPricePerSeat();
 
   const toggleSeat = (seatNumber) => {
-    setSelectedSeats(prev => 
-      prev.includes(seatNumber) 
+    setSelectedSeats(prev => {
+      const newSeats = prev.includes(seatNumber) 
         ? prev.filter(s => s !== seatNumber) 
-        : [...prev, seatNumber]
-    );
+        : [...prev, seatNumber];
+
+      if (onSeatsSelected) {
+        const seatsWithType = newSeats.map(seat => ({
+          number: seat,
+          type: 'adult'
+        }));
+        onSeatsSelected(seatsWithType);
+      }
+      
+      return newSeats;
+    });
   };
 
   const getSeatSize = () => {

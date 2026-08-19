@@ -1,0 +1,93 @@
+.pay-personal {
+  background: #FFFFFF;
+}
+
+.pay-personal__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pay-personal__item {
+  background: #F9F9F9;
+  margin: 30px 35px 88px 35px;
+}
+
+.pay-personal__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.pay-personal__item-number {
+  font-size: 16px;
+  font-weight: 500;
+  color: #292929;
+}
+
+.pay-personal__item-type {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pay-personal__item-type--adult {
+  background: #E3F2FD;
+  color: #1976D2;
+}
+
+.pay-personal__item-type--child {
+  background: #FFF3E0;
+  color: #F57C00;
+}
+
+.pay-personal__item-body {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pay-personal__field-group {
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+}
+
+.pay-personal__field-group--contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 54px;
+}
+
+.pay-personal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pay-personal__label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.pay-personal__input {
+  padding: 12px 83px 12px 15px;
+  border: 1px solid #928F94;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #292929;
+  background: #FFFFFF;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pay-personal__input::placeholder {
+  color: #C4C4C4;
+}

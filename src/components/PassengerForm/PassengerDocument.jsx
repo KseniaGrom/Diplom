@@ -1,16 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PassengerDocument.css';
 import CustomSelect from './CustomSelect';
 
-function PassengerDocument() {
-  const [docType, setDocType] = useState('Паспорт РФ');
+function PassengerDocument({ 
+  index, 
+  onDataChange,
+  docType: initialDocType = 'Паспорт РФ',
+  series: initialSeries = '',
+  number: initialNumber = ''
+}) {
+  const [docType, setDocType] = useState(initialDocType);
   const [isFocused, setIsFocused] = useState(false);
-  const [seriesValue, setSeriesValue] = useState('');
-  const [numberValue, setNumberValue] = useState('');
+  const [seriesValue, setSeriesValue] = useState(initialSeries);
+  const [numberValue, setNumberValue] = useState(initialNumber);
 
   const docOptions = ['Паспорт РФ', 'Свидетельство о рождении'];
 
   const isBirthCertificate = docType === 'Свидетельство о рождении';
+
+  useEffect(() => {
+    if (onDataChange) {
+      onDataChange({
+        docType: docType,
+        series: seriesValue,
+        number: numberValue
+      });
+    }
+  }, [docType, seriesValue, numberValue]);
+
+  const handleDocTypeChange = (value) => {
+    console.log(`📝 Пассажир ${index}: выбран документ:`, value);
+    setDocType(value);
+  };
 
   const handleNumberInput = (e, maxLength, setter, allowLetters = false) => {
     let value = e.target.value;
@@ -58,7 +79,7 @@ function PassengerDocument() {
         <CustomSelect
           options={docOptions}
           value={docType}
-          onChange={setDocType}
+          onChange={handleDocTypeChange}
           className="passenger-document__select-custom"
         />
       </div>

@@ -6,7 +6,6 @@ import HeaderRow from './HeaderRow';
 import './HeaderPages.css';
 
 function HeaderPages({ currentStep = 1 }) {
-    console.log('HeaderPages currentStep:', currentStep); 
 
   return (
     <header className="header-pages">

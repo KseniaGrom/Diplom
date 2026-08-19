@@ -14,8 +14,6 @@ function PassengerNextButton({
 }) {
   const navigate = useNavigate();
 
-  console.log('ticket в кнопке:', ticket);
-
   const handleClick = () => {
     if (onClick) {
       onClick();

@@ -28,7 +28,25 @@ function PassengerForm({
     Array.from({ length: initialCount }, (_, i) => i + 1)
   );
 
-  const [passengerDataMap, setPassengerDataMap] = useState({});
+  const [passengerDataMap, setPassengerDataMap] = useState(() => {
+    const initialData = {};
+    for (let i = 1; i <= initialCount; i++) {
+      initialData[i] = {
+        surname: '',
+        name: '',
+        patronymic: '',
+        birthDate: '',
+        gender: '',
+        docType: 'Паспорт РФ',
+        series: '',
+        number: '',
+        phone: '',
+        email: '',
+        limitedMobility: false
+      };
+    }
+    return initialData;
+  });
 
   const togglePassenger = (index) => {
     setExpandedPassengers(prev =>
@@ -60,6 +78,22 @@ function PassengerForm({
     setPassengerTypes(prev => ({
       ...prev,
       [newIndex]: 'Взрослый'
+    }));
+    setPassengerDataMap(prev => ({
+      ...prev,
+      [newIndex]: {
+        surname: '',
+        name: '',
+        patronymic: '',
+        birthDate: '',
+        gender: '',
+        docType: 'Паспорт РФ',
+        series: '',
+        number: '',
+        phone: '',
+        email: '',
+        limitedMobility: false
+      }
     }));
   };
 
@@ -109,7 +143,7 @@ function PassengerForm({
                   name={currentData.name || ''}
                   patronymic={currentData.patronymic || ''}
                   birthDate={currentData.birthDate || ''}
-                  gender={currentData.gender || 'Ж'}
+                  gender={currentData.gender || ''} // ← передаем пустую строку
                 />
               </div>
             )}
@@ -145,7 +179,7 @@ function PassengerForm({
                     name: currentData.name || '',
                     patronymic: currentData.patronymic || '',
                     birthDate: currentData.birthDate || '',
-                    docType: passengerTypes[index] || 'Взрослый',
+                    docType: currentData.docType || 'Паспорт РФ',
                     series: currentData.series || '',
                     number: currentData.number || ''
                   }}

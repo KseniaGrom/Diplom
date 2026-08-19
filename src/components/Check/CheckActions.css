@@ -1,0 +1,38 @@
+.check-actions {
+  display: flex;
+  gap: 16px;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #E5E5E5;
+}
+
+.check-actions__button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.check-actions__button--back {
+  background: #F0F0F0;
+  color: #666;
+}
+
+.check-actions__button--back:hover {
+  background: #E5E5E5;
+}
+
+.check-actions__button--confirm {
+  background: #FFA800;
+  color: #FFFFFF;
+  flex: 1;
+}
+
+.check-actions__button--confirm:hover {
+  background: #FF8C00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 168, 0, 0.3);
+}

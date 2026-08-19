@@ -1,0 +1,26 @@
+.check {
+  background-color: #F7F5F9;
+  min-height: 100vh;
+}
+
+.check__container {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.check__main {
+  display: flex;
+  padding: 95px 0 0 0;
+}
+
+.check__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.check__right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 84px;
+}

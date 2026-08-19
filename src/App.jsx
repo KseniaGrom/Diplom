@@ -6,6 +6,7 @@ import ChoosingPlaces from './pages/ChoosingPlaces';
 import Passengers from './pages/Passengers';
 import Footer from './components/Footer/Footer';
 import Pay from './pages/Pay';
+import Check from './pages/Check';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/choosingplaces" element={<ChoosingPlaces />} />
           <Route path="/passengers" element={<Passengers />} />
           <Route path="/pay" element={<Pay />} />
+          <Route path="/check" element={<Check />} />
         </Routes>
         <Footer />
       </div>

@@ -1,0 +1,25 @@
+.check-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.check-price__label {
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.check-price__value {
+  font-size: 30px;
+  font-weight: 700;
+  color: #292929;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-price__rub-icon {
+  width: 20px;
+  height: 24  px;
+}

@@ -6,8 +6,6 @@ function TicketButton({ ticket }) {
   const navigate = useNavigate();
   
   const handleClick = () => {
-    console.log('Кнопка нажата!'); // ★ ПРОВЕРКА ★
-    console.log('Билет:', ticket); // ★ ПРОВЕРКА ★
     
     navigate('/choosingplaces', {
       state: {

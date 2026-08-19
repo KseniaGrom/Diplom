@@ -1,0 +1,82 @@
+.pay-payment {
+  background: #FFFFFF;
+}
+
+.pay-payment__options {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pay-payment__main-online {
+  border-bottom: 1px dashed #928F94;
+  margin-top: 50px;
+  padding-left: 35px;
+}
+
+.pay-payment__main-cash {
+  margin: 58px 0 52px 35px;
+}
+
+.pay-payment__option {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.pay-payment__radio {
+  width: 20px;
+  height: 20px;
+  accent-color: #FFA800;
+  cursor: pointer;
+  flex-shrink: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid #928F94;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.pay-payment__radio:checked {
+  border-color: #FFA800;
+  background-color: #FFA800;
+}
+
+.pay-payment__radio:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.pay-payment__radio:hover {
+  border-color: #FFA800;
+}
+
+.pay-payment__option-label {
+  font-size: 24px;
+  color: #928F94;
+  font-weight: 400;
+}
+
+.pay-payment__sub-options {
+  display: flex;
+  flex-direction: row;
+  gap: 56px;  
+  padding-bottom: 64px;
+}
+
+.pay-payment__sub-option {
+  font-size: 24px;
+  font-weight: 700;
+  color: #292929;
+  width: 184px;
+}

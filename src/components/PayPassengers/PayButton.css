@@ -1,0 +1,22 @@
+.paybutton {
+    width: 323px;
+    height: 60px;
+    box-sizing: border-box;
+    background-color: #FFA800;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+}
+
+.paybutton:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.paybutton:active {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    color: #FFA800;
+    background-color: #FFFFFF;
+    border: 1px solid #FFA800;
+}
