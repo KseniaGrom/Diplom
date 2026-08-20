@@ -1,0 +1,21 @@
+.final-button {
+    background-color: rgba(255, 168, 0, 0.88);
+    border: 1px solid #3E3C41;
+    border-radius: 5px;
+    color: #292929;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 17px 11px;
+    cursor: pointer;
+}
+
+.final-button:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.final-button:active {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    color: #292929;
+    border: 1px solid #3E3C41;
+}

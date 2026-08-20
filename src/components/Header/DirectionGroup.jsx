@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './DirectionGroup.css';
 import arrowIcon from '../../Images/group-arrow.png';
 import locationIcon from '../../Images/point.png';
+import CityAutocomplete from '../CityAutocomplete/CityAutocomplete';
 
 function DirectionGroup() {
+  const [fromCity, setFromCity] = useState('');
+  const [toCity, setToCity] = useState('');
+
   return (
     <div className="direction-group">
       <label className="direction-group__label">Направление</label>
       <div className="direction-group__inputs">
         <div className="direction-group__input-wrapper">
-          <input
-            type="text"
-            className="direction-group__input"
-            placeholder="Откуда"
+          <CityAutocomplete
+            value={fromCity}
+            onChange={setFromCity}
           />
           <img 
             src={locationIcon} 
@@ -28,10 +31,9 @@ function DirectionGroup() {
         />
         
         <div className="direction-group__input-wrapper">
-          <input
-            type="text"
-            className="direction-group__input"
-            placeholder="Куда"
+          <CityAutocomplete
+            value={toCity}
+            onChange={setToCity}
           />
           <img 
             src={locationIcon} 

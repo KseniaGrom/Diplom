@@ -67,18 +67,32 @@ function TicketInfBack({ ticket }) {
             </span>
           </div>
 
-          <div className="ticket-info-back__arrow">
-            <img src={arrowIcon} alt="→" className="ticket-info-back__arrow-icon" />
-          </div>
-
-          <div className="ticket-info-back__route">
-            <div className="ticket-info-back__point">
+          <div className="ticket-info-back__time-row">
+            <div className="ticket-info-back__time-point">
               <span className="ticket-info-back__time">
                 {ticket.departure?.time || '00:10'}
               </span>
               <span className="ticket-info-back__date">
                 {ticket.departure?.date || '09.09.2018'}
               </span>
+            </div>
+
+            <div className="ticket-info-back__arrow">
+              <img src={arrowIcon} alt="←" className="ticket-info-back__arrow-icon" />
+            </div>
+
+            <div className="ticket-info-back__time-point ticket-info-back__time-point--right">
+              <span className="ticket-info-back__time">
+                {ticket.arrival?.time || '09:52'}
+              </span>
+              <span className="ticket-info-back__date">
+                {ticket.arrival?.date || '08.09.2018'}
+              </span>
+            </div>
+          </div>
+
+          <div className="ticket-info-back__station-row">
+            <div className="ticket-info-back__station-point">
               <span className="ticket-info-back__city">
                 {ticket.departure?.city || 'Москва'}
               </span>
@@ -86,13 +100,8 @@ function TicketInfBack({ ticket }) {
                 {ticket.departure?.station || 'Курский вокзал'}
               </span>
             </div>
-            <div className="ticket-info-back__point ticket-info-back__point--right">
-              <span className="ticket-info-back__time">
-                {ticket.arrival?.time || '09:52'}
-              </span>
-              <span className="ticket-info-back__date">
-                {ticket.arrival?.date || '08.09.2018'}
-              </span>
+
+            <div className="ticket-info-back__station-point ticket-info-back__station-point--right">
               <span className="ticket-info-back__city">
                 {ticket.arrival?.city || 'Санкт-Петербург'}
               </span>

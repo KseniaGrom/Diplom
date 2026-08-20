@@ -67,18 +67,32 @@ function TicketInfoThere({ ticket }) {
             </span>
           </div>
 
-          <div className="ticket-info-there__arrow">
-            <img src={arrowIcon} alt="→" className="ticket-info-there__arrow-icon" />
-          </div>
-
-          <div className="ticket-info-there__route">
-            <div className="ticket-info-there__point">
+          <div className="ticket-info-there__time-row">
+            <div className="ticket-info-there__time-point">
               <span className="ticket-info-there__time">
                 {ticket.departure?.time || '00:10'}
               </span>
               <span className="ticket-info-there__date">
                 {ticket.departure?.date || '30.08.2018'}
               </span>
+            </div>
+
+            <div className="ticket-info-there__arrow">
+              <img src={arrowIcon} alt="→" className="ticket-info-there__arrow-icon" />
+            </div>
+
+            <div className="ticket-info-there__time-point ticket-info-there__time-point--right">
+              <span className="ticket-info-there__time">
+                {ticket.arrival?.time || '09:52'}
+              </span>
+              <span className="ticket-info-there__date">
+                {ticket.arrival?.date || '31.08.2018'}
+              </span>
+            </div>
+          </div>
+
+          <div className="ticket-info-there__station-row">
+            <div className="ticket-info-there__station-point">
               <span className="ticket-info-there__city">
                 {ticket.departure?.city || 'Москва'}
               </span>
@@ -86,13 +100,8 @@ function TicketInfoThere({ ticket }) {
                 {ticket.departure?.station || 'Курский вокзал'}
               </span>
             </div>
-            <div className="ticket-info-there__point ticket-info-there__point--right">
-              <span className="ticket-info-there__time">
-                {ticket.arrival?.time || '09:52'}
-              </span>
-              <span className="ticket-info-there__date">
-                {ticket.arrival?.date || '31.08.2018'}
-              </span>
+
+            <div className="ticket-info-there__station-point ticket-info-there__station-point--right">
               <span className="ticket-info-there__city">
                 {ticket.arrival?.city || 'Санкт-Петербург'}
               </span>

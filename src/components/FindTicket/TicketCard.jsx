@@ -4,7 +4,8 @@ import TicketHeader from './TicketHeader';
 import TicketRoute from './TicketRoute';
 import TicketSeats from './TicketSeats';
 
-function TicketCard({ ticket }) {
+function TicketCard({ ticket, departureDate, returnDate }) {  
+
   return (
     <div className="ticket-card">
       <TicketHeader 
@@ -30,7 +31,12 @@ function TicketCard({ ticket }) {
         )}
       </div>
       
-      <TicketSeats seats={ticket.seats} ticket={ticket} />
+      <TicketSeats 
+        seats={ticket.seats || []} 
+        ticket={ticket}
+        departureDate={departureDate}
+        returnDate={returnDate}
+      />
     </div>
   );
 }

@@ -46,3 +46,12 @@
   top: 20%;
   pointer-events: none;
 }
+
+.date__input-wrapper .calendar-wrapper {
+  position: absolute;
+  top: -100%;
+  left: -22px;
+  z-index: 1000;
+  width: 100%;
+  min-width: 352px;
+}

@@ -60,11 +60,15 @@ function Check() {
             </div>
             
             <div className="check__section">
-              <h2 className="check__section-title">Способ оплаты</h2>
               <CheckPayment payment={payment} />
             </div>
 
-            <CheckActions />
+            <CheckActions 
+              ticket={ticket}
+              passengers={passengers}
+              price={price}
+              payment={payment}
+            />
           </div>
         </div>
       </main>

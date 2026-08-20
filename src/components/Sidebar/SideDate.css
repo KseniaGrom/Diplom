@@ -3,14 +3,13 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 43px 36px 33px 29px;
-  gap: 26px;                         /* ← общий отступ между группами (26px) */
+  gap: 26px;
 }
 
-/* Группа для каждой даты (лейбл + инпут) */
 .sidedate__group {
   display: flex;
   flex-direction: column;
-  gap: 11px;                         /* ← отступ между лейблом и инпутом */
+  gap: 11px;
   width: 100%;
 }
 
@@ -23,6 +22,13 @@
 .sidedate-inputs {
   display: flex;
   align-items: center;
+  width: 100%;
+}
+
+.sidedate-wrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
 }
 
 .sidedate__field {
@@ -34,15 +40,11 @@
   font-size: 18px;
   width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .sidedate__field::placeholder {
   color: #E5E5E5;
-}
-
-.sidedate-wrapper {
-  position: relative;
-  flex: 1;
 }
 
 .sidedate-icon {
@@ -50,7 +52,15 @@
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;
   width: 20px;
   height: 20px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.sidedate-wrapper .calendar {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -24px;
+  z-index: 1000;
 }

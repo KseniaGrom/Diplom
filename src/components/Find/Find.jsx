@@ -1,9 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Find.css';
 
-function Find({ count, showValue = '5', onShowChange }) {
+function Find({ 
+  count, 
+  showValue = '5', 
+  onShowChange,
+  sortValue = 'времени',
+  onSortChange 
+}) {
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [sortValue, setSortValue] = useState('времени');
+  const [localSortValue, setLocalSortValue] = useState(sortValue);
   const [showValueState, setShowValueState] = useState(showValue);
 
   const sortRef = useRef(null);
@@ -20,6 +26,14 @@ function Find({ count, showValue = '5', onShowChange }) {
 
   const sortOptions = ['времени', 'стоимости', 'длительности'];
   const showOptions = ['5', '10', '20'];
+
+  const handleSortSelect = (item) => {
+    setLocalSortValue(item);
+    setIsSortOpen(false);
+    if (onSortChange) {
+      onSortChange(item);
+    }
+  };
 
   const handleShowOptionClick = (value) => {
     setShowValueState(value);
@@ -39,18 +53,15 @@ function Find({ count, showValue = '5', onShowChange }) {
               className="find__sort-value"
               onClick={() => setIsSortOpen(!isSortOpen)}
             >
-              {sortValue}
+              {localSortValue}
             </span>
             {isSortOpen && (
               <div className="find__dropdown">
                 {sortOptions.map((item) => (
                   <span
                     key={item}
-                    className={item === sortValue ? 'find__dropdown--active' : ''}
-                    onClick={() => {
-                      setSortValue(item);
-                      setIsSortOpen(false);
-                    }}
+                    className={item === localSortValue ? 'find__dropdown--active' : ''}
+                    onClick={() => handleSortSelect(item)}
                   >
                     {item}
                   </span>

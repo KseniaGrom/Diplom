@@ -4,12 +4,10 @@ import vectorLeft from '../../Images/Pagination/vectorleft.png';
 import vectorRight from '../../Images/Pagination/vectorright.png';
 
 function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
-  // ★ ЛОГИКА: показываем 1-3, при нажатии вправо — все страницы ★
   const getVisiblePages = () => {
     const pages = [];
 
     if (currentPage <= 3) {
-      // ★ Если мы на 1, 2 или 3 странице — показываем только 1, 2, 3 ★
       for (let i = 1; i <= Math.min(3, totalPages); i++) {
         pages.push(i);
       }
@@ -18,7 +16,6 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
         pages.push(totalPages);
       }
     } else {
-      // ★ Если мы за 3-й страницей — показываем 1, точки, текущую и соседние, точки, последнюю ★
       pages.push(1);
       pages.push('...');
       
@@ -59,7 +56,7 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
         onClick={handlePrev}
         disabled={currentPage === 1}
       >
-        <img src={vectorLeft} alt="◀" className="pagination__arrow" />
+        <img src={vectorLeft} alt="" className="pagination__arrow" />
       </button>
 
       {visiblePages.map((page, index) => (
@@ -81,7 +78,7 @@ function Pagination({ currentPage = 1, totalPages = 10, onPageChange }) {
         onClick={handleNext}
         disabled={currentPage === totalPages}
       >
-        <img src={vectorRight} alt="▶" className="pagination__arrow" />
+        <img src={vectorRight} alt="" className="pagination__arrow" />
       </button>
     </div>
   );

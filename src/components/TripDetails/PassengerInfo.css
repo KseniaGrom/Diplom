@@ -45,14 +45,13 @@
 }
 
 .passenger-info__body {
-  padding: 0 28px 24px;
+  padding: 0 28px 22px;
 }
 
 .passenger-info__item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
 }
 
 .passenger-info__item-left {

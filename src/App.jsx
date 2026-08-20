@@ -7,6 +7,7 @@ import Passengers from './pages/Passengers';
 import Footer from './components/Footer/Footer';
 import Pay from './pages/Pay';
 import Check from './pages/Check';
+import Final from './pages/FInal';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/passengers" element={<Passengers />} />
           <Route path="/pay" element={<Pay />} />
           <Route path="/check" element={<Check />} />
+          <Route path="/final" element={<Final />} />
         </Routes>
         <Footer />
       </div>

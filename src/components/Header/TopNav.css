@@ -1,9 +1,9 @@
 .top-nav {
-    background: #1a1a1a;
-    height: 94px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  background: #292929;
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .top-nav__container {

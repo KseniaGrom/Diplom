@@ -1,0 +1,30 @@
+.final-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 60px 79px 39px 82px;
+}
+
+.final-order__number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3E3C41;
+}
+
+.final-order__price {
+  font-size: 36px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+.final-order__price-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3E3C41;
+  margin-right: 8px;
+}
+
+.final-order__rub-icon {
+  width: 21px;
+  height: 27px;
+}

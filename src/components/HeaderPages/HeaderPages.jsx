@@ -5,7 +5,7 @@ import HeaderForm from './HeaderForm';
 import HeaderRow from './HeaderRow';
 import './HeaderPages.css';
 
-function HeaderPages({ currentStep = 1 }) {
+function HeaderPages({ currentStep = 1, departureDate, returnDate, onDateChange }) {
 
   return (
     <header className="header-pages">
@@ -13,7 +13,11 @@ function HeaderPages({ currentStep = 1 }) {
         <Logo />
       </div> 
       <TopNav />
-      <HeaderForm />
+      <HeaderForm 
+        departureDate={departureDate}
+        returnDate={returnDate}
+        onDateChange={onDateChange}
+      />
       <HeaderRow currentStep={currentStep} />
     </header>
   );

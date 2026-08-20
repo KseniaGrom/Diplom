@@ -1,0 +1,36 @@
+.final-info {
+  background-color: #F4F3F6;
+  box-sizing: border-box;
+}
+
+.final-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 145px;
+  padding-top: 40px;
+  padding-bottom: 39px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.final-info__item {
+  width: 155px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-direction: column;
+}
+
+.final-info__text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+  text-align: center;
+  padding: 0 8px;
+  width: 167px;
+}
+
+.final-info__span {
+  font-weight: 500;
+}
+

@@ -1,0 +1,17 @@
+.choosingplaces {
+  background-color: #F7F5F9;
+  min-height: 100vh;
+}
+
+.choosingplaces__main {
+  display: flex;
+  padding: 95px 0 0 0;
+}
+
+.choosingplaces__left {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 94px;
+}
+

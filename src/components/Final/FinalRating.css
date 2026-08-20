@@ -1,0 +1,34 @@
+.final-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 51px 78px 50px 83px;
+  background-color: rgba(255, 168, 0, 0.88);
+}
+
+.final-rating-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.final-rating__label {
+  font-size: 24px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.final-rating__stars {
+  display: flex;
+  gap: 8px;
+}
+
+.final-rating__star {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.final-rating__star--active {
+  filter: brightness(0) saturate(100%) invert(46%) sepia(94%) saturate(715%) hue-rotate(358deg) brightness(103%) contrast(103%);
+}
