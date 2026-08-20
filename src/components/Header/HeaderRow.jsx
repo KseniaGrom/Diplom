@@ -7,30 +7,28 @@ function HeaderRow({ isLoading = false, onLoadComplete }) {
   useEffect(() => {
     if (isLoading) {
       setProgress(0);
-    }
-  }, [isLoading]);
 
-  useEffect(() => {
-    if (!isLoading) {
-      setProgress(100);
-      if (onLoadComplete) onLoadComplete();
-      return;
-    }
-
-    const timer = setTimeout(() => {
+      // Временно работает по интервалу, чтобы было видно работу
       const interval = setInterval(() => {
         setProgress(prev => {
-          if (prev >= 95) {
+          const newProgress = prev + Math.random() * 6 + 2;
+          if (newProgress >= 100) {
             clearInterval(interval);
-            return 95;
+            setTimeout(() => {
+              if (onLoadComplete) {
+                onLoadComplete();
+              }
+            }, 500);
+            return 100;
           }
-          return prev + Math.random() * 6 + 2;
+          return newProgress;
         });
       }, 100);
-      return () => clearInterval(interval);
-    }, 50);
 
-    return () => clearTimeout(timer);
+      return () => clearInterval(interval);
+    } else {
+      setProgress(100);
+    }
   }, [isLoading]);
 
   return (
