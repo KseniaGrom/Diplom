@@ -1,5 +1,6 @@
 import React from 'react';
 import './PassengerAddButton.css';
+import plusIcon from '../../Images/PassengerForm/plus.png';
 
 function PassengerAddButton({ onClick }) {
   return (
@@ -9,7 +10,11 @@ function PassengerAddButton({ onClick }) {
           <span className="passenger-add-button__title">Добавить пассажира</span>
         </div>
         <div className="passenger-add-button__right">
-          <img alt="добавить" className="passenger-add-button__icon" src="/src/Images/PassengerForm/plus.png"></img>
+          <img 
+            alt="добавить" 
+            className="passenger-add-button__icon" 
+            src={plusIcon}
+          />
         </div>
       </div>
     </div>

@@ -29,7 +29,6 @@ function PassengerDocument({
   }, [docType, seriesValue, numberValue]);
 
   const handleDocTypeChange = (value) => {
-    console.log(`📝 Пассажир ${index}: выбран документ:`, value);
     setDocType(value);
   };
 

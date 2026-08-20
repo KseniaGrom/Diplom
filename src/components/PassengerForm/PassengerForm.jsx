@@ -143,7 +143,7 @@ function PassengerForm({
                   name={currentData.name || ''}
                   patronymic={currentData.patronymic || ''}
                   birthDate={currentData.birthDate || ''}
-                  gender={currentData.gender || ''} // ← передаем пустую строку
+                  gender={currentData.gender || ''}
                 />
               </div>
             )}
@@ -174,16 +174,9 @@ function PassengerForm({
                       }
                     }
                   }}
-                  passengerData={{
-                    surname: currentData.surname || '',
-                    name: currentData.name || '',
-                    patronymic: currentData.patronymic || '',
-                    birthDate: currentData.birthDate || '',
-                    docType: currentData.docType || 'Паспорт РФ',
-                    series: currentData.series || '',
-                    number: currentData.number || ''
-                  }}
-                />
+              passengerDataMap={passengerDataMap}
+              currentIndex={index}
+              />
               </div>
             )}
           </div>

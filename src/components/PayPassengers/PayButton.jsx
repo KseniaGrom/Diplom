@@ -55,9 +55,7 @@ function PayButton({
   const handleClick = () => {
     const passengers = formatPassengersData();
     const totalPrice = calculateTotalPrice();
-
-    console.log('📦 passengers с типами:', passengers);
-
+    
     const checkoutData = {
       ticket: ticket,
       passengers: passengers,

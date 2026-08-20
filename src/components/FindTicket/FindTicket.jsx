@@ -4,12 +4,12 @@ import TicketCard from './TicketCard';
 import Find from '../Find/Find';
 import Pagination from '../Pagination/Pagination';
 
-function FindTicket({ departureDate, returnDate }) {
+function FindTicket({ departureDate, returnDate, filters }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [ticketsPerPage, setTicketsPerPage] = useState(5);
   const [sortType, setSortType] = useState('времени');
 
- const tickets = [
+const tickets = [
   {
     id: 1,
     number: '116С',
@@ -26,23 +26,23 @@ function FindTicket({ departureDate, returnDate }) {
     ],
     wagons: {
       'Сидячий': [
-        { id: 1, number: '20', seats: 11, price: '2 920', service: 'ОТК', people: 11, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: true, active: true }, tea: { included: false, active: false } } },
-        { id: 2, number: '21', seats: 12, price: '3 020', service: 'ФПК', people: 10, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } },
-        { id: 3, number: '22', seats: 35, price: '1 920', service: 'ФПК', people: 11, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: true, active: true }, tea: { included: false, active: false } } },
-        { id: 4, number: '25', seats: 35, price: '1 920', service: 'ФПК', people: 9, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: true, active: true } } }
+        { id: 1, number: '20', seats: 11, price: '2 920', service: 'ОТК', people: 11, services: { wifi: true, tea: true, express: true } },
+        { id: 2, number: '21', seats: 12, price: '3 020', service: 'ФПК', people: 10, services: { wifi: true, tea: true, express: true } },
+        { id: 3, number: '22', seats: 35, price: '1 920', service: 'ФПК', people: 11, services: { wifi: true, tea: true, express: true } },
+        { id: 4, number: '25', seats: 35, price: '1 920', service: 'ФПК', people: 9, services: { wifi: true, tea: true, express: true } }
       ],
       'Плацкарт': [
-        { id: 5, number: '10', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ОТК', top: 10, bottom: 11, people: 13, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } },
-        { id: 6, number: '12', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ФПК', top: 10, bottom: 11, people: 13, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } },
-        { id: 7, number: '15', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { bedding: { included: false, active: false }, conditioner: { included: true, active: true }, wifi: { included: false, active: false }, tea: { included: false, active: false } } }
+        { id: 5, number: '10', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ОТК', top: 10, bottom: 11, people: 13, services: { wifi: true, tea: true, express: true } },
+        { id: 6, number: '12', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ФПК', top: 10, bottom: 11, people: 13, services: { wifi: true, tea: true, express: true } },
+        { id: 7, number: '15', seats: 21, priceTop: '2 020', priceBottom: '3 030', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { wifi: true, tea: true, express: true } }
       ],
       'Купе': [
-        { id: 8, number: '07', seats: 11, priceTop: '2 920', priceBottom: '3 530', service: 'ФПК', top: 3, bottom: 8, people: 11, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: true, active: true } } },
-        { id: 9, number: '09', seats: 11, priceTop: '4 920', priceBottom: '5 920', service: 'нет', top: 4, bottom: 4, people: 15, services: { bedding: { included: true, active: true }, conditioner: { included: false, active: false }, wifi: { included: true, active: true }, tea: { included: false, active: false } } }
+        { id: 8, number: '07', seats: 11, priceTop: '2 920', priceBottom: '3 530', service: 'ФПК', top: 3, bottom: 8, people: 11, services: { wifi: true, tea: true, express: true } },
+        { id: 9, number: '09', seats: 11, priceTop: '4 920', priceBottom: '5 920', service: 'нет', top: 4, bottom: 4, people: 15, services: { wifi: true, tea: true, express: true } }
       ],
       'Люкс': [
-        { id: 10, number: '02', seats: 8, price: '4 920', service: 'VIP', people: 19, services: { bedding: { included: true, active: true }, conditioner: { included: true, active: true }, wifi: { included: true, active: true }, tea: { included: true, active: true } } },
-        { id: 11, number: '05', seats: 8, price: '8 920', service: 'VIP', people: 5, services: { bedding: { included: false, active: false }, conditioner: { included: false, active: false }, wifi: { included: false, active: false }, tea: { included: false, active: false } } }
+        { id: 10, number: '02', seats: 8, price: '4 920', service: 'VIP', people: 19, services: { wifi: true, tea: true, express: true } },
+        { id: 11, number: '05', seats: 8, price: '8 920', service: 'VIP', people: 5, services: { wifi: true, tea: true, express: true } }
       ]
     }
   },
@@ -61,11 +61,11 @@ function FindTicket({ departureDate, returnDate }) {
     ],
     wagons: {
       'Купе': [
-        { id: 12, number: '26', seats: 8, price: '4 920', service: 'ОТК', top: 4, bottom: 4, people: 15 },
-        { id: 13, number: '27', seats: 8, price: '4 920', service: 'ФПК', top: 4, bottom: 4, people: 14 }
+        { id: 12, number: '26', seats: 8, price: '4 920', service: 'ОТК', top: 4, bottom: 4, people: 15, services: { wifi: true, tea: true, express: true } },
+        { id: 13, number: '27', seats: 8, price: '4 920', service: 'ФПК', top: 4, bottom: 4, people: 14, services: { wifi: true, tea: true, express: true } }
       ],
       'Люкс': [
-        { id: 14, number: '28', seats: 4, price: '8 920', service: 'VIP', people: 5 }
+        { id: 14, number: '28', seats: 4, price: '8 920', service: 'VIP', people: 5, services: { wifi: true, tea: true, express: true } }
       ]
     }
   },
@@ -90,14 +90,14 @@ function FindTicket({ departureDate, returnDate }) {
     ],
     wagons: {
       'Плацкарт': [
-        { id: 15, number: '29', seats: 21, price: '2 920', service: 'ОТК', top: 10, bottom: 11, people: 12 },
-        { id: 16, number: '30', seats: 22, price: '2 920', service: 'ФПК', top: 10, bottom: 12, people: 13 }
+        { id: 15, number: '29', seats: 21, price: '2 920', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { wifi: true, tea: true, express: true } },
+        { id: 16, number: '30', seats: 22, price: '2 920', service: 'ФПК', top: 10, bottom: 12, people: 13, services: { wifi: true, tea: true, express: true } }
       ],
       'Купе': [
-        { id: 17, number: '31', seats: 8, price: '4 920', service: 'нет', top: 4, bottom: 4, people: 15 }
+        { id: 17, number: '31', seats: 8, price: '4 920', service: 'нет', top: 4, bottom: 4, people: 15, services: { wifi: true, tea: true, express: true } }
       ],
       'Люкс': [
-        { id: 18, number: '32', seats: 4, price: '8 920', service: 'VIP', people: 5 }
+        { id: 18, number: '32', seats: 4, price: '8 920', service: 'VIP', people: 5, services: { wifi: true, tea: true, express: true } }
       ]
     }
   },
@@ -122,13 +122,13 @@ function FindTicket({ departureDate, returnDate }) {
     ],
     wagons: {
       'Плацкарт': [
-        { id: 19, number: '33', seats: 21, price: '2 920', service: 'ОТК', top: 10, bottom: 11, people: 12 }
+        { id: 19, number: '33', seats: 21, price: '2 920', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { wifi: true, tea: true, express: true } }
       ],
       'Купе': [
-        { id: 20, number: '34', seats: 8, price: '4 920', service: 'нет', top: 4, bottom: 4, people: 15 }
+        { id: 20, number: '34', seats: 8, price: '4 920', service: 'нет', top: 4, bottom: 4, people: 15, services: { wifi: true, tea: true, express: true } }
       ],
       'Люкс': [
-        { id: 21, number: '35', seats: 4, price: '8 920', service: 'VIP', people: 5 }
+        { id: 21, number: '35', seats: 4, price: '8 920', service: 'VIP', people: 5, services: { wifi: true, tea: true, express: true } }
       ]
     }
   },
@@ -153,21 +153,22 @@ function FindTicket({ departureDate, returnDate }) {
     ],
     wagons: {
       'Сидячий': [
-        { id: 22, number: '36', seats: 11, price: '2 920', service: 'ОТК', people: 11 }
+        { id: 22, number: '36', seats: 11, price: '2 920', service: 'ОТК', people: 11, services: { wifi: true, tea: true, express: true } }
       ],
       'Плацкарт': [
-        { id: 23, number: '37', seats: 21, price: '2 920', service: 'ОТК', top: 10, bottom: 11, people: 12 },
-        { id: 24, number: '38', seats: 22, price: '2 920', service: 'ФПК', top: 10, bottom: 12, people: 13 }
+        { id: 23, number: '37', seats: 21, price: '2 920', service: 'ОТК', top: 10, bottom: 11, people: 12, services: { wifi: true, tea: true, express: true } },
+        { id: 24, number: '38', seats: 22, price: '2 920', service: 'ФПК', top: 10, bottom: 12, people: 13, services: { wifi: true, tea: true, express: true } }
       ],
       'Купе': [
-        { id: 25, number: '39', seats: 8, price: '4 920', service: 'нет', top: 4, bottom: 4, people: 15 }
+        { id: 25, number: '39', seats: 8, price: '4 920', service: 'нет', top: 4, bottom: 4, people: 15, services: { wifi: true, tea: true, express: true } }
       ],
       'Люкс': [
-        { id: 26, number: '40', seats: 4, price: '8 920', service: 'VIP', people: 5 }
+        { id: 26, number: '40', seats: 4, price: '8 920', service: 'VIP', people: 5, services: { wifi: true, tea: true, express: true } }
       ]
     }
   }
 ];
+
  
   const getTimeInMinutes = (timeStr) => {
     if (!timeStr) return Infinity;

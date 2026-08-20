@@ -1,3 +1,81 @@
+.passenger-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+
+.passenger-button-wrapper--error {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+  padding: 37px 0 36px 24px;
+  background: rgba(255, 61, 0, 0.38);
+}
+
+.passenger-button-wrapper--success {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  background: #B2F6A1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.passenger-button-error-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 520px;
+  gap: 18px;
+}
+
+.passenger-button-error {
+  color: #292929;
+  font-size: 18px;
+  font-weight: 400;
+  flex: 1;
+  text-align: left;
+}
+
+.passenger-button-error strong {
+  font-weight: 700;
+}
+
+.passenger-button-error-close {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.passenger-button-success {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  gap: 15px;
+}
+
+.passenger-button-success-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
+
+.passenger-button-success-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.passenger-button-success-text {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 400;
+}
+
 .passenger-next-button {
   width: 303px;
   height: 52px;
@@ -10,12 +88,12 @@
   cursor: pointer;
   margin: 37px 31px 28px 0;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 .passenger-next-button:hover {
   color: #FFA800;
   box-shadow: 0px 4px 4px 0px #00000040;
-
 }
 
 .passenger-next-button:active {

@@ -22,7 +22,7 @@ function App() {
           <Route path="/check" element={<Check />} />
           <Route path="/final" element={<Final />} />
         </Routes>
-        <Footer />
+         <Footer id="footer" />
       </div>
     </BrowserRouter>
   );

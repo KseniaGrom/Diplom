@@ -4,9 +4,9 @@ import FooterConnect from './FooterConnect';
 import FooterSub from './FooterSub';
 import FooterLogo from './FooterLogo';
 
-function Footer() {
+function Footer({ id }) {
   return (
-    <footer className="footer">
+    <footer id={id} className="footer">
       <div className="footer-conteiner">
         <FooterConnect />
         <FooterSub />

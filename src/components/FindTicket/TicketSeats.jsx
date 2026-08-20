@@ -2,7 +2,9 @@ import React from 'react';
 import './TicketSeats.css';
 import TicketSeat from './TicketSeat';
 import TicketButton from './TicketButton';
-import TicketIcon from '../../Images/ticketIcon.png';
+import WiFiIcon from '../../Images/SideToggle/Wi-Fi.png';
+import ExpressIcon from '../../Images/SideToggle/Express.png';
+import TeaIcon from '../../Images/SideToggle/eat.png';
 
 function TicketSeats({ 
   seats, 
@@ -51,6 +53,19 @@ function TicketSeats({
     };
   };
 
+  const getServiceIcons = (wagon) => {
+    if (!wagon?.services) return [];
+    
+    const icons = [];
+    const services = wagon.services;
+
+    if (services.wifi) icons.push(WiFiIcon);
+    if (services.tea) icons.push(TeaIcon);
+    if (services.express) icons.push(ExpressIcon);
+    
+    return icons;
+  };
+
   return (
     <div className="ticket-seats">
       <div className="ticket-seats__list">
@@ -69,11 +84,18 @@ function TicketSeats({
         })}
       </div>
       <div className="ticket-seats__action">
-        <img 
-          src={TicketIcon} 
-          alt="билет" 
-          className="ticket-seats__icon" 
-        />
+        <div className="ticket-seats__services">
+          {ticket?.wagons && Object.values(ticket.wagons)[0]?.[0] && 
+            getServiceIcons(Object.values(ticket.wagons)[0][0]).map((icon, idx) => (
+              <img 
+                key={idx}
+                src={icon} 
+                alt="услуга" 
+                className="ticket-seats__service-icon" 
+              />
+            ))
+          }
+        </div>
         <TicketButton 
           ticket={ticket}
           adults={adults}

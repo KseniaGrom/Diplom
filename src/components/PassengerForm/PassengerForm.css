@@ -26,7 +26,6 @@
 
 .passenger-form__next-wrapper {
     display: flex;
-    justify-content: flex-end;
 }
 
 .passenger-form__bottom {

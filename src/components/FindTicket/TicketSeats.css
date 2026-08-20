@@ -15,7 +15,16 @@
     gap: 19px;
 }
 
+.ticket-seats__services {
+  display: flex;
+  gap: 16px;
+}
+
 .ticket-seats__icon {
   width: 92px;
   height: 20px;
+}
+
+.ticket-seats__service-icon {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(0%) saturate(1%) hue-rotate(186deg) brightness(94%) contrast(89%);
 }

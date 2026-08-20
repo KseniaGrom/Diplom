@@ -130,13 +130,9 @@
 .calendar__day--past {
   color: #808080;
   cursor: default;
+  pointer-events: none;
 }
-
-.calendar__day--past:hover {
-  background: none;
-  border: none;
-}
-
+  
 .calendar__day--today {
   font-weight: 600;
 }

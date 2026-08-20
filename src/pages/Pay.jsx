@@ -21,8 +21,6 @@ function Pay() {
     passengerData
   } = state;
 
-  console.log('Pay state:', state);
-
   if (!ticket) {
     return (
       <Error 

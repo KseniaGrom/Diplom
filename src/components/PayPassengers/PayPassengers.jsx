@@ -11,7 +11,8 @@ function PayPassengers({
   children = 0, 
   childrenWithoutSeat = 0,
   adultPrice = 0,
-  childPrice = 0
+  childPrice = 0,
+  onPaymentChange
 }) {
 
   const [allPassengers, setAllPassengers] = useState(passengerData || {});
@@ -21,6 +22,9 @@ function PayPassengers({
   const handlePaymentChange = (method, online) => {
     setPaymentMethod(method);
     setOnlineMethod(online);
+    if (onPaymentChange) {
+      onPaymentChange(method, online);
+    }
   };
 
   const handlePassengerUpdate = (updatedData) => {

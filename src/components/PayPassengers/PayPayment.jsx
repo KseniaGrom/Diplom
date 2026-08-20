@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PayPersonalHeader from './PayPersonalHeader';
 import './PayPayment.css';
 import PayButton from './PayButton';
@@ -10,7 +10,8 @@ function PayPayment({
   children, 
   childrenWithoutSeat, 
   adultPrice, 
-  childPrice 
+  childPrice,
+  onPaymentChange
 }) {
   const [selectedMethod, setSelectedMethod] = useState('online');
 
@@ -28,6 +29,12 @@ function PayPayment({
   const getOnlineMethod = () => {
     return 'Банковской картой';
   };
+
+  useEffect(() => {
+    if (onPaymentChange) {
+      onPaymentChange(getPaymentMethod(), getOnlineMethod());
+    }
+  }, [selectedMethod]);
 
   return (
     <div className="pay-payment">
