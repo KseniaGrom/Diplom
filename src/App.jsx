@@ -11,7 +11,7 @@ import Final from './pages/FInal';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Diplom">
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
