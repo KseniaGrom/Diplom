@@ -16,6 +16,7 @@ function DirectionGroup() {
           <CityAutocomplete
             value={fromCity}
             onChange={setFromCity}
+            placeholder="Откуда"
           />
           <img 
             src={locationIcon} 
@@ -34,6 +35,7 @@ function DirectionGroup() {
           <CityAutocomplete
             value={toCity}
             onChange={setToCity}
+            placeholder="Куда"
           />
           <img 
             src={locationIcon} 

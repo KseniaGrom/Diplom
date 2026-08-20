@@ -28,7 +28,7 @@ function CityAutocomplete({
   value = '', 
   onChange,
   onSelect,
-  placeholder = 'Откуда'
+  placeholder = ''
 }) {
   const [suggestions, setSuggestions] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
