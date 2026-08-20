@@ -12,8 +12,6 @@ function TicketEndButn({
 }) {
   const navigate = useNavigate();
 
-  console.log('🎫 TicketEndButn передает:', { ticket, adults, children, childrenWithoutSeat, adultPrice, childPrice });
-
   const handleClick = () => {
     navigate('/passengers', {
       state: {

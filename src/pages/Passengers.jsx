@@ -18,8 +18,6 @@ function Passengers() {
     childPrice = 1010
   } = location.state || {};
 
-  console.log('Passengers ticket:', ticket);
-
   if (!ticket) {
     return (
       <Error 
