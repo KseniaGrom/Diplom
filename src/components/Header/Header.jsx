@@ -1,18 +1,24 @@
 import React from 'react';
 import Logo from './Logo';
 import TopNav from './TopNav';
-import HeroContainer from './HeroContainer'
+import HeroContainer from './HeroContainer';
+import HeaderRow from './HeaderRow';
 import './Header.css';
 
-function Header() {
+function Header({ currentStep = 1, isLoading = false, onLoadComplete, onSearchStart }) {
   return (
     <header className="header">
       <div className="header__logo-wrapper"> 
         <Logo />
       </div> 
       <TopNav />
-      <HeroContainer /> 
-      <div className = "header-row"></div>
+      <HeroContainer onSearchStart={onSearchStart} />
+      <HeaderRow 
+        currentStep={currentStep} 
+        totalSteps={4} 
+        isLoading={isLoading}
+        onLoadComplete={onLoadComplete}
+      />
     </header>
   );
 }

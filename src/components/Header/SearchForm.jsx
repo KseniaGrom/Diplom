@@ -4,7 +4,7 @@ import DateGroup from './DateGroup';
 import SearchButton from './SearchButton';
 import './SearchForm.css';
 
-function SearchForm() {
+function SearchForm({ onSearchStart }) {
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
 
@@ -24,6 +24,7 @@ function SearchForm() {
       <SearchButton 
         departureDate={departureDate}
         returnDate={returnDate}
+        onSearchStart={onSearchStart}
       />
     </div>
   );

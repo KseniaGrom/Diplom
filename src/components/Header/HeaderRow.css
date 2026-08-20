@@ -1,0 +1,13 @@
+.header-row-wrapper {
+  width: 100%;
+  height: 8px;
+  background-color: #292929;
+  overflow: hidden;
+}
+
+.header-row {
+  height: 100%;
+  background-color: #FFA800;
+  transition: width 0.5s ease;
+  width: 0%;
+}
