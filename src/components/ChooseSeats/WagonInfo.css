@@ -1,23 +1,24 @@
 .wagon-info {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: row;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
 }
+
 .wagon-info__header {
-    width: 190px;
-    height: 161px;
-    padding: 30px 52px 32px 37px;
-    background-color: #FFD98F;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
+  width: 190px;
+  height: 161px;
+  padding: 30px 52px 32px 37px;
+  background-color: #FFD98F;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
 .wagon-info-place {
-        display: flex;
-    gap: 21px;
-    flex-direction: column;
+  display: flex;
+  gap: 21px;
+  flex-direction: column;
 }
 
 .wagon-info__number {
@@ -33,19 +34,19 @@
 }
 
 .wagon-info__body {
-    padding: 33px 42px 86px 85px;
-    display: flex;
-    flex-direction: row;
-    gap: 84px;
-    width: 100%;
-    justify-content: space-between;
+  padding: 33px 42px 21px 85px;
+  display: flex;
+  flex-direction: row;
+  gap: 84px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .wagon-info__item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }
 
 .wagon-info__item-label {
@@ -55,8 +56,8 @@
 }
 
 .wagon-info__item-text {
-    font-size: 24px;
-    font-weight: 400;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .wagon-info__item-value {
@@ -65,6 +66,13 @@
   color: #000000;
 }
 
+.wagon-info__item-value--service {
+  font-size: 18px;
+  font-weight: 400;
+  color: #C4C4C4;
+}
+
+
 .wagon-info__item-value--price {
   color: #000000;
   font-size: 24px;
@@ -72,32 +80,32 @@
 }
 
 .wagon-info__costs {
-    display: flex;
+  display: flex;
 }
 
 .wagon-info__rub-icon {
-    width: 14px;
-    height: 17px;
-    padding-left: 8px;
+  width: 14px;
+  height: 17px;
+  padding-left: 8px;
 }
 
-.wagon-info__costs-item{
-    display: flex;
-    flex-direction: column;
-    gap: 21px;
+.wagon-info__costs-item {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
 }
 
 .wagon-info__service-value {
-    font-size: 18px;
-    font-weight: 400;
-    color: #C4C4C4;
+  font-size: 18px;
+  font-weight: 400;
+  color: #C4C4C4;
 }
 
 .wagon-info__buttons {
-    display: flex;
-    gap: 13px;
-    margin-top: 17px;
-    align-items: center;
+  display: flex;
+  gap: 13px;
+  margin-top: 17px;
+  align-items: center;
 }
 
 .wagon-info__btn-wrapper {
@@ -106,23 +114,24 @@
 }
 
 .wagon-info__btn {
-    display: flex;
-    background: #FFFFFF;
-    border: 1px solid #C4C4C4;
-    border-radius: 4px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #292929;
-    cursor: pointer;
-    width: 36px;
-    height: 35px;
-    align-items: center;
+  display: flex;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #292929;
+  cursor: pointer;
+  width: 36px;
+  height: 35px;
+  align-items: center;
 }
 
 /* ★ ПОДСКАЗКА ★ */
 .wagon-info__tooltip {
   position: absolute;
-  top: calc(100% + 8px);          /* ← под кнопкой */
+  top: calc(100% + 8px);
+  /* ← под кнопкой */
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 10px;
@@ -136,14 +145,14 @@
 }
 
 .wagon-info__btn--included {
-  background: #FCDC9D;  
+  background: #FCDC9D;
   border-color: #FCDC9D;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .wagon-info__btn--included .wagon-info__btn-icon {
   filter: brightness(0) saturate(100%) invert(65%) sepia(9%) saturate(126%) hue-rotate(232deg) brightness(86%) contrast(92%);
-} 
+}
 
 .wagon-info__btn--included:hover {
   pointer-events: none;

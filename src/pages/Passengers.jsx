@@ -9,6 +9,7 @@ import Error from '../components/Error/Error';
 function Passengers() {
   const location = useLocation();
   const navigate = useNavigate();
+  
   const { 
     ticket, 
     adults = 2, 
@@ -17,6 +18,7 @@ function Passengers() {
     adultPrice = 2020,
     childPrice = 1010
   } = location.state || {};
+
 
   if (!ticket) {
     return (

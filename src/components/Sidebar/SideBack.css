@@ -83,7 +83,8 @@
 
 .sideback__slider-wrapper {
     position: relative;
-    padding: 12px 0;          /* ← увеличен для кружков */
+    padding: 12px 0;
+    /* ← увеличен для кружков */
 }
 
 .sideback__slider-track {
@@ -104,14 +105,17 @@
 
 .sideback__range-inputs {
     position: relative;
-    height: 24px;             /* ← как высота кружка */
-    margin-top: -28px;        /* ← поднимаем на дорожку */
+    height: 24px;
+    /* ← как высота кружка */
+    margin-top: -28px;
+    /* ← поднимаем на дорожку */
 }
 
 .sideback__range {
     position: absolute;
     width: 100%;
-    height: 18px;             /* ← высота кружка */
+    height: 18px;
+    /* ← высота кружка */
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
@@ -147,7 +151,8 @@
 
 .sideback__range-label {
     position: absolute;
-    bottom: -4px;             /* ← опускаем подписи */
+    bottom: -4px;
+    /* ← опускаем подписи */
     font-size: 16px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.3);
@@ -169,7 +174,8 @@
 
 .sideback__thumb-value {
     position: absolute;
-    bottom: -4px;             /* ← опускаем значения под кружками */
+    bottom: -4px;
+    /* ← опускаем значения под кружками */
     font-size: 16px;
     font-weight: 400;
     color: #E5E5E5;

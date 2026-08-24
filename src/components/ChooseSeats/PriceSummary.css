@@ -51,7 +51,6 @@
   font-weight: 700;
   color: #FFFFFF;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 .price-summary__button:hover {

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import About from '../components/About/About';
 import HowWork from '../components/HowWork/HowWork';
@@ -8,35 +8,29 @@ import '../index.css';
 
 function Home() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  const [searchData, setSearchData] = useState(null);
-
-  useEffect(() => {
-    const hash = location.hash.replace('#', '');
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 300);
-    }
-  }, [location]);
 
   const handleSearchStart = (data) => {
-    setSearchData(data);
     setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/tickets', {
+        state: {
+          fromCity: data.fromCity,
+          toCity: data.toCity,
+          fromCityId: data.fromCityId,
+          toCityId: data.toCityId,
+          departureDate: data.departureDate,
+          returnDate: data.returnDate,
+          params: data.params
+        }
+      });
+    }, 500);
   };
 
   const handleLoadComplete = () => {
     setIsLoading(false);
-    navigate('/tickets', {
-      state: {
-        departureDate: searchData?.departureDate,
-        returnDate: searchData?.returnDate,
-      }
-    });
   };
 
   return (
@@ -46,15 +40,9 @@ function Home() {
         onLoadComplete={handleLoadComplete}
         onSearchStart={handleSearchStart}
       />
-      <section id="about">
-        <About />
-      </section>
-      <section id="how-work">
-        <HowWork />
-      </section>
-      <section id="feedback">
-        <Feedback />
-      </section>
+      <About />
+      <HowWork />
+      <Feedback />
     </div>
   );
 }

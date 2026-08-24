@@ -8,21 +8,25 @@ import LuxIcon from '../../Images/SideToggle/Lux.png';
 import WiFiIcon from '../../Images/SideToggle/Wi-Fi.png';
 import ExpressIcon from '../../Images/SideToggle/Express.png';
 
-function SideToggle({ onFilterChange }) {
+function SideToggle({ onWagonChange, onServicesChange }) {
   const [filters, setFilters] = useState({
-    Купе: true,
+    Купе: false,
     Плацкарт: false,
     Сидячий: false,
     Люкс: false,
-    'Wi Fi': true,
-    Экспресс: false
+    wifi: false,
+    express: false
   });
 
   const handleToggle = (label, value) => {
     const newFilters = { ...filters, [label]: value };
     setFilters(newFilters);
-    if (onFilterChange) {
-      onFilterChange(newFilters);
+    
+    const wagonTypes = ['Купе', 'Плацкарт', 'Сидячий', 'Люкс'];
+    if (wagonTypes.includes(label)) {
+      if (onWagonChange) onWagonChange(newFilters);
+    } else {
+      if (onServicesChange) onServicesChange(newFilters);
     }
   };
 
@@ -31,34 +35,38 @@ function SideToggle({ onFilterChange }) {
       <ToggleItem 
         icon={KypeIcon} 
         label="Купе" 
-        defaultOn={true}
+        defaultOn={false}
         onToggle={(value) => handleToggle('Купе', value)}
       />
       <ToggleItem 
         icon={PlatcIcon} 
         label="Плацкарт" 
+        defaultOn={false}
         onToggle={(value) => handleToggle('Плацкарт', value)}
       />
       <ToggleItem 
         icon={SeatIcon} 
         label="Сидячий" 
+        defaultOn={false}
         onToggle={(value) => handleToggle('Сидячий', value)}
       />
       <ToggleItem 
         icon={LuxIcon} 
         label="Люкс" 
+        defaultOn={false}
         onToggle={(value) => handleToggle('Люкс', value)}
       />
       <ToggleItem 
         icon={WiFiIcon} 
         label="Wi-Fi" 
-        defaultOn={true}
-        onToggle={(value) => handleToggle('Wi Fi', value)}
+        defaultOn={false}
+        onToggle={(value) => handleToggle('wifi', value)}
       />
       <ToggleItem 
         icon={ExpressIcon} 
         label="Экспресс" 
-        onToggle={(value) => handleToggle('Экспресс', value)}
+        defaultOn={false}
+        onToggle={(value) => handleToggle('express', value)}
       />
     </div>
   );

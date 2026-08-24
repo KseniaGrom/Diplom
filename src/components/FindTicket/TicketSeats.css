@@ -8,11 +8,11 @@
 }
 
 .ticket-seats__action {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-direction: column;
-    gap: 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 19px;
 }
 
 .ticket-seats__services {

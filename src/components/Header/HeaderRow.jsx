@@ -4,22 +4,18 @@ import './HeaderRow.css';
 function HeaderRow({ isLoading = false, onLoadComplete }) {
   const [progress, setProgress] = useState(100);
 
+  console.log('🔄 HeaderRow получил isLoading:', isLoading);
+
   useEffect(() => {
     if (isLoading) {
       setProgress(0);
 
-      // Временно работает по интервалу, чтобы было видно работу
       const interval = setInterval(() => {
         setProgress(prev => {
-          const newProgress = prev + Math.random() * 6 + 2;
-          if (newProgress >= 100) {
+          const newProgress = prev + 5;
+          if (newProgress >= 95) {
             clearInterval(interval);
-            setTimeout(() => {
-              if (onLoadComplete) {
-                onLoadComplete();
-              }
-            }, 500);
-            return 100;
+            return 95;
           }
           return newProgress;
         });
@@ -28,6 +24,7 @@ function HeaderRow({ isLoading = false, onLoadComplete }) {
       return () => clearInterval(interval);
     } else {
       setProgress(100);
+      if (onLoadComplete) onLoadComplete();
     }
   }, [isLoading]);
 

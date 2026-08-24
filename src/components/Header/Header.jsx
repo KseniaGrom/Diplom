@@ -5,7 +5,8 @@ import HeroContainer from './HeroContainer';
 import HeaderRow from './HeaderRow';
 import './Header.css';
 
-function Header({ currentStep = 1, isLoading = false, onLoadComplete, onSearchStart }) {
+function Header({ isLoading = false, onLoadComplete, onSearchStart }) {
+  
   return (
     <header className="header">
       <div className="header__logo-wrapper"> 
@@ -14,8 +15,6 @@ function Header({ currentStep = 1, isLoading = false, onLoadComplete, onSearchSt
       <TopNav />
       <HeroContainer onSearchStart={onSearchStart} />
       <HeaderRow 
-        currentStep={currentStep} 
-        totalSteps={4} 
         isLoading={isLoading}
         onLoadComplete={onLoadComplete}
       />

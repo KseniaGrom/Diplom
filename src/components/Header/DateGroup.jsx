@@ -24,7 +24,7 @@ function DateGroup({ onDateChange, initialStartDate, initialEndDate }) {
   const handleDateSelect = (date) => {
     let newStartDate = startDate;
     let newEndDate = endDate;
-    
+
     if (activeField === 'start') {
       newStartDate = date;
       setStartDate(date);
@@ -32,10 +32,10 @@ function DateGroup({ onDateChange, initialStartDate, initialEndDate }) {
       newEndDate = date;
       setEndDate(date);
     }
-    
+
     setIsCalendarOpen(false);
     setActiveField(null);
-    
+
     if (onDateChange) {
       onDateChange({
         startDate: newStartDate,

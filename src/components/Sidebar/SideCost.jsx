@@ -1,46 +1,53 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SideCost.css';
 
-function SideCost() {
-  const minValue = 1920;
+function SideCost({ onPriceChange }) {
+  const minValue = 500;
   const maxValue = 7000;
   const priceGap = 500;
 
-  const defaultMax = 4500;
-  
-  const [minPrice, setMinPrice] = useState(minValue);
-  const [maxPrice, setMaxPrice] = useState(defaultMax);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
   
   const sliderRef = useRef(null);
 
   useEffect(() => {
-    const minPercent = ((minPrice - minValue) / (maxValue - minValue)) * 100;
-    const maxPercent = ((maxPrice - minValue) / (maxValue - minValue)) * 100;
+    const currentMin = minPrice !== null ? minPrice : minValue;
+    const currentMax = maxPrice !== null ? maxPrice : maxValue;
+    
+    const minPercent = ((currentMin - minValue) / (maxValue - minValue)) * 100;
+    const maxPercent = ((currentMax - minValue) / (maxValue - minValue)) * 100;
     
     if (sliderRef.current) {
       sliderRef.current.style.left = `${minPercent}%`;
       sliderRef.current.style.right = `${100 - maxPercent}%`;
     }
+
+    if (onPriceChange) {
+      onPriceChange(minPrice, maxPrice);
+    }
   }, [minPrice, maxPrice]);
 
   const handleMinChange = (e) => {
     let value = parseInt(e.target.value);
-    if (value > maxPrice - priceGap) {
-      value = maxPrice - priceGap;
+    const currentMax = maxPrice !== null ? maxPrice : maxValue;
+    if (value > currentMax - priceGap) {
+      value = currentMax - priceGap;
     }
     setMinPrice(value);
   };
 
   const handleMaxChange = (e) => {
     let value = parseInt(e.target.value);
-    if (value < minPrice + priceGap) {
-      value = minPrice + priceGap;
+    const currentMin = minPrice !== null ? minPrice : minValue;
+    if (value < currentMin + priceGap) {
+      value = currentMin + priceGap;
     }
     setMaxPrice(value);
   };
 
-  const showMinLabel = minPrice !== minValue;
-  const showMaxLabel = maxPrice !== maxValue;
+  const showMinLabel = minPrice !== null && minPrice > minValue;
+  const showMaxLabel = maxPrice !== null && maxPrice < maxValue;
 
   return (
     <div className="side-cost">
@@ -87,8 +94,8 @@ function SideCost() {
           className="side-cost__range side-cost__range--min"
           min={minValue}
           max={maxValue}
-          step="10"
-          value={minPrice}
+          step="100"
+          value={minPrice !== null ? minPrice : minValue}
           onChange={handleMinChange}
         />
         <input
@@ -96,8 +103,8 @@ function SideCost() {
           className="side-cost__range side-cost__range--max"
           min={minValue}
           max={maxValue}
-          step="10"
-          value={maxPrice}
+          step="100"
+          value={maxPrice !== null ? maxPrice : maxValue}
           onChange={handleMaxChange}
         />
       </div>

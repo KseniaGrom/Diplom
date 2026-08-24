@@ -8,7 +8,7 @@ import teaIcon from '../../Images/Services/tea.png';
 
 function WagonInfo({ wagon, wagonType }) {
   const [hoveredBtn, setHoveredBtn] = useState(null);
-  
+
   const [services, setServices] = useState({
     bedding: { included: false, active: false },
     conditioner: { included: false, active: false },
@@ -16,22 +16,52 @@ function WagonInfo({ wagon, wagonType }) {
     tea: { included: false, active: false }
   });
 
+  const getActualWagonType = () => {
+    if (wagonType && wagonType !== 'Все') return wagonType;
+
+    const raw = wagon?.raw;
+    if (raw?.coach?.class_type) {
+      const types = {
+        'first': 'Люкс',
+        'second': 'Купе',
+        'third': 'Плацкарт',
+        'fourth': 'Сидячий'
+      };
+      return types[raw.coach.class_type] || 'Неизвестно';
+    }
+
+    if (wagon?.type && wagon.type !== 'undefined') {
+      return wagon.type;
+    }
+
+    return 'Неизвестно';
+  };
+
+  const actualWagonType = getActualWagonType();
+
   useEffect(() => {
-    if (wagon?.services) {
+    if (wagon) {
+      console.log('🔍 WagonInfo получил wagon:', wagon);
+
+      const hasWifi = wagon.wifi || wagon.have_wifi || false;
+      const hasConditioner = wagon.conditioner || wagon.have_air_conditioning || false;
+      const hasLinens = wagon.linens || wagon.is_linens_included || false;
+      const hasTea = wagon.tea || false;
+
       setServices({
-        bedding: { included: false, active: false, ...wagon.services.bedding },
-        conditioner: { included: false, active: false, ...wagon.services.conditioner },
-        wifi: { included: false, active: false, ...wagon.services.wifi },
-        tea: { included: false, active: false, ...wagon.services.tea }
+        bedding: { included: hasLinens, active: false },
+        conditioner: { included: hasConditioner, active: false },
+        wifi: { included: hasWifi, active: false },
+        tea: { included: hasTea, active: false }
       });
     }
   }, [wagon]);
 
   const serviceData = [
-    { id: 'conditioner', icon: conditionerIcon, label: 'кондиционер', description: 'кондиционер' },
+    { id: 'conditioner', icon: conditionerIcon, label: 'кондиционер', description: 'Кондиционер' },
     { id: 'wifi', icon: wifiIcon, label: 'Wi-Fi', description: 'Wi-Fi' },
-    { id: 'bedding', icon: beddingIcon, label: 'белье', description: 'белье' },
-    { id: 'tea', icon: teaIcon, label: 'питание', description: 'питание' }
+    { id: 'bedding', icon: beddingIcon, label: 'белье', description: 'Бельё' },
+    { id: 'tea', icon: teaIcon, label: 'питание', description: 'Питание' }
   ];
 
   const toggleService = (id) => {
@@ -55,67 +85,105 @@ function WagonInfo({ wagon, wagonType }) {
     setHoveredBtn(null);
   };
 
-  // ★ СИДЯЧИЙ И ЛЮКС — БЕЗ ВЕРХНИХ/НИЖНИХ И ОДНА ЦЕНА ★
-  const isSimpleWagon = wagonType === 'Сидячий' || wagonType === 'Люкс';
+  const isSimpleWagon = actualWagonType === 'Сидячий' || actualWagonType === 'Люкс';
+
+  const formatWagonNumber = (num) => {
+    if (!num) return '01';
+    return String(num).padStart(2, '0');
+  };
+
+  if (!wagon) {
+    return (
+      <div className="wagon-info">
+        <div className="wagon-info__empty">Нет данных о вагоне</div>
+      </div>
+    );
+  }
+
+  const wagonNumber = wagon.number || wagon.raw?.coach?.name || 1;
+
+  const seats = wagon.seats || wagon.raw?.coach?.available_seats || 0;
+
+  const price = wagon.price || wagon.raw?.coach?.price || 0;
+  const priceTop = wagon.priceTop || wagon.raw?.coach?.top_price || 0;
+  const priceBottom = wagon.priceBottom || wagon.raw?.coach?.bottom_price || 0;
+
+  const getTopBottomCount = () => {
+    const seatsData = wagon.seatsData || wagon.raw?.seats || [];
+    if (!seatsData.length) return { top: 0, bottom: 0 };
+
+    let top = 0;
+    let bottom = 0;
+    seatsData.forEach(seat => {
+      if (seat.index % 2 === 0) {
+        bottom += 1;
+      } else {
+        top += 1;
+      }
+    });
+    return { top, bottom };
+  };
+
+  const { top: topCount, bottom: bottomCount } = getTopBottomCount();
 
   return (
     <div className="wagon-info">
       <div className="wagon-info__header">
-        <span className="wagon-info__number">{wagon.number}</span>
+        <span className="wagon-info__number">{formatWagonNumber(wagonNumber)}</span>
         <span className="wagon-info__label">вагон</span>
       </div>
-      
+
       <div className="wagon-info__body">
         <div className="wagon-info-place">
           <div className="wagon-info__item">
             <span className="wagon-info__item-label">Места</span>
-            <span className="wagon-info__item-value">{wagon.seats}</span>
+            <span className="wagon-info__item-value">{seats}</span>
           </div>
-          
+
           {!isSimpleWagon && (
             <>
               <div className="wagon-info__item">
                 <span className="wagon-info__item-text">Верхние</span>
-                <span className="wagon-info__item-value">{wagon.top || 0}</span>
+                <span className="wagon-info__item-value wagon-info__item-value--seats">{topCount}</span>
               </div>
               <div className="wagon-info__item">
                 <span className="wagon-info__item-text">Нижние</span>
-                <span className="wagon-info__item-value">{wagon.bottom || 0}</span>
+                <span className="wagon-info__item-value wagon-info__item-value--seats">{bottomCount}</span>
               </div>
             </>
           )}
         </div>
-        
+
         <div className="wagon-info-costs">
           <div className="wagon-info__costs-item">
             <span className="wagon-info__item-label">Стоимость</span>
-            
+
             {isSimpleWagon ? (
               <div className="wagon-info__item-value wagon-info__item-value--price">
-                {wagon.price}
+                {price}
                 <img src={rubIcon} alt="₽" className="wagon-info__rub-icon" />
               </div>
             ) : (
               <>
                 <div className="wagon-info__item-value wagon-info__item-value--price">
-                  {wagon.priceTop || wagon.price}
+                  {priceTop || price}
                   <img src={rubIcon} alt="₽" className="wagon-info__rub-icon" />
                 </div>
                 <div className="wagon-info__item-value wagon-info__item-value--price">
-                  {wagon.priceBottom || wagon.price}
+                  {priceBottom || price}
                   <img src={rubIcon} alt="₽" className="wagon-info__rub-icon" />
                 </div>
               </>
             )}
           </div>
         </div>
-        
+
         <div className="wagon-info-service">
           <div className="wagon-info__item">
             <span className="wagon-info__item-label">Обслуживание</span>
-            <span className="wagon-info__item-value">{wagon.service || 'ОТК'}</span>
+            <span className="wagon-info__item-value wagon-info__item-value--service">ФПК</span>
           </div>
-          
+
           <div className="wagon-info__buttons">
             {serviceData.map((service) => {
               const isIncluded = services[service.id]?.included || false;
@@ -128,7 +196,7 @@ function WagonInfo({ wagon, wagonType }) {
                   onMouseEnter={() => handleMouseEnter(service.id)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button 
+                  <button
                     className={`wagon-info__btn 
                       ${isIncluded ? 'wagon-info__btn--included' : ''} 
                       ${isActive && !isIncluded ? 'wagon-info__btn--active' : ''}
@@ -136,10 +204,10 @@ function WagonInfo({ wagon, wagonType }) {
                     onClick={() => toggleService(service.id)}
                     disabled={isIncluded}
                   >
-                    <img 
-                      src={service.icon} 
-                      alt={service.label} 
-                      className="wagon-info__btn-icon" 
+                    <img
+                      src={service.icon}
+                      alt={service.label}
+                      className="wagon-info__btn-icon"
                     />
                   </button>
                   {hoveredBtn === service.id && !isIncluded && (

@@ -46,14 +46,14 @@ function Calendar({ onDateSelect, onClose }) {
 
   const handleDateClick = (day, isPrevMonth, isNextMonth) => {
     if (isPrevMonth || isNextMonth) return;
-    
+
     const today = new Date();
     const date = new Date(currentYear, currentMonth, day);
-    
+
     if (date < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
       return;
     }
-    
+
     setSelectedDate(date);
     if (onDateSelect) {
       onDateSelect(date);
@@ -92,10 +92,10 @@ function Calendar({ onDateSelect, onClose }) {
       const isPast = date < new Date(todayYear, todayMonth, todayDate);
       const isToday = day === todayDate && currentMonth === todayMonth && currentYear === todayYear;
       const isSunday = new Date(currentYear, currentMonth, day).getDay() === 0;
-      const isSelected = selectedDate && 
-                         selectedDate.getDate() === day &&
-                         selectedDate.getMonth() === currentMonth &&
-                         selectedDate.getFullYear() === currentYear;
+      const isSelected = selectedDate &&
+        selectedDate.getDate() === day &&
+        selectedDate.getMonth() === currentMonth &&
+        selectedDate.getFullYear() === currentYear;
 
       days.push(
         <div

@@ -4,9 +4,27 @@ import arrowIcon from '../../Images/group-arrow.png';
 import locationIcon from '../../Images/point.png';
 import CityAutocomplete from '../CityAutocomplete/CityAutocomplete';
 
-function DirectionGroup() {
+function DirectionGroup({ onFromChange, onToChange }) {
   const [fromCity, setFromCity] = useState('');
   const [toCity, setToCity] = useState('');
+  const [fromCityId, setFromCityId] = useState(null);
+  const [toCityId, setToCityId] = useState(null);
+
+  const handleFromSelect = (city, cityId) => {
+    setFromCity(city);
+    setFromCityId(cityId);
+    if (onFromChange) {
+      onFromChange(city, cityId);
+    }
+  };
+
+  const handleToSelect = (city, cityId) => {
+    setToCity(city);
+    setToCityId(cityId);
+    if (onToChange) {
+      onToChange(city, cityId);
+    }
+  };
 
   return (
     <div className="direction-group">
@@ -14,9 +32,9 @@ function DirectionGroup() {
       <div className="direction-group__inputs">
         <div className="direction-group__input-wrapper">
           <CityAutocomplete
-            value={fromCity}
-            onChange={setFromCity}
             placeholder="Откуда"
+            value={fromCity}
+            onChange={handleFromSelect}
           />
           <img 
             src={locationIcon} 
@@ -33,9 +51,9 @@ function DirectionGroup() {
         
         <div className="direction-group__input-wrapper">
           <CityAutocomplete
-            value={toCity}
-            onChange={setToCity}
             placeholder="Куда"
+            value={toCity}
+            onChange={handleToSelect}
           />
           <img 
             src={locationIcon} 

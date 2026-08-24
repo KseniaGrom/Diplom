@@ -1,41 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { getCities } from '../../api/api';
 import './CityAutocomplete.css';
 
-const CITIES = [
-  'Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Казань',
-  'Нижний Новгород', 'Челябинск', 'Омск', 'Самара', 'Ростов-на-Дону',
-  'Уфа', 'Красноярск', 'Пермь', 'Воронеж', 'Волгоград',
-  'Краснодар', 'Саратов', 'Тюмень', 'Тольятти', 'Ижевск',
-  'Барнаул', 'Ульяновск', 'Иркутск', 'Хабаровск', 'Ярославль',
-  'Владивосток', 'Махачкала', 'Томск', 'Оренбург', 'Кемерово',
-  'Новокузнецк', 'Рязань', 'Астрахань', 'Набережные Челны', 'Пенза',
-  'Липецк', 'Киров', 'Тула', 'Чебоксары', 'Калининград',
-  'Брянск', 'Курск', 'Иваново', 'Магнитогорск', 'Тверь',
-  'Ставрополь', 'Белгород', 'Сочи', 'Архангельск', 'Владимир',
-  'Мурманск', 'Смоленск', 'Якутск', 'Чита', 'Орёл',
-  'Вологда', 'Саранск', 'Тамбов', 'Владикавказ', 'Петрозаводск',
-  'Кострома', 'Комсомольск-на-Амуре', 'Таганрог', 'Сыктывкар',
-  'Нижний Тагил', 'Благовещенск', 'Ангарск', 'Братск', 'Великий Новгород',
-  'Дзержинск', 'Шахты', 'Орск', 'Стерлитамак', 'Грозный',
-  'Нижневартовск', 'Йошкар-Ола', 'Сургут', 'Майкоп', 'Назрань',
-  'Элиста', 'Псков', 'Абакан', 'Улан-Удэ', 'Кызыл',
-  'Бийск', 'Прокопьевск', 'Балашиха', 'Химки', 'Подольск',
-  'Королёв', 'Мытищи', 'Люберцы', 'Красногорск', 'Одинцово',
-  'Домодедово', 'Раменское', 'Долгопрудный', 'Реутов', 'Жуковский'
-];
-
-function CityAutocomplete({ 
-  value = '', 
+function CityAutocomplete({
+  value = '',
   onChange,
-  onSelect,
   placeholder = ''
 }) {
+  const [inputValue, setInputValue] = useState(value);
   const [suggestions, setSuggestions] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [isLoading, setIsLoading] = useState(false);
   const [suggestionText, setSuggestionText] = useState('');
   const wrapperRef = useRef(null);
   const inputRef = useRef(null);
+  const debounceTimer = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -48,51 +28,48 @@ function CityAutocomplete({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const getFirstSuggestion = (query) => {
-    if (!query.trim()) return '';
-    const lowerQuery = query.toLowerCase().trim();
-    const found = CITIES.find(city => 
-      city.toLowerCase().startsWith(lowerQuery)
-    );
-    return found || '';
+  useEffect(() => {
+    if (value !== inputValue) {
+      setInputValue(value);
+    }
+  }, [value]);
+
+  const fetchCities = async (query) => {
+    if (!query || query.trim().length === 0) {
+      setSuggestions([]);
+      setIsOpen(false);
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const data = await getCities(query.trim());
+      setSuggestions(data || []);
+      setIsOpen(data && data.length > 0);
+    } catch (error) {
+      console.error('❌ Ошибка поиска городов:', error);
+      setSuggestions([]);
+      setIsOpen(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const filterCities = (query) => {
-    if (!query.trim()) {
-      return CITIES.slice(0, 10);
-    }
-    
-    const lowerQuery = query.toLowerCase().trim();
-    const filtered = CITIES.filter(city => 
-      city.toLowerCase().includes(lowerQuery)
-    );
-    
-    filtered.sort((a, b) => {
-      const aStarts = a.toLowerCase().startsWith(lowerQuery);
-      const bStarts = b.toLowerCase().startsWith(lowerQuery);
-      if (aStarts && !bStarts) return -1;
-      if (!aStarts && bStarts) return 1;
-      return a.localeCompare(b);
-    });
-    
-    return filtered.slice(0, 15);
+  const debouncedSearch = (query) => {
+    clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => {
+      fetchCities(query);
+    }, 300);
   };
 
   const handleInputChange = (e) => {
     const val = e.target.value;
+    setInputValue(val);
     setHighlightedIndex(-1);
-    
-    if (onChange) {
-      onChange(val);
-    }
-    
-    const filtered = filterCities(val);
-    setSuggestions(filtered);
-    setIsOpen(filtered.length > 0);
-    
-    if (val.trim()) {
-      const firstMatch = getFirstSuggestion(val);
-      if (firstMatch && firstMatch !== val && firstMatch.startsWith(val)) {
+
+    if (val.trim() && suggestions.length > 0) {
+      const firstMatch = suggestions[0]?.name || '';
+      if (firstMatch.toLowerCase().startsWith(val.toLowerCase())) {
         const remaining = firstMatch.slice(val.length);
         setSuggestionText(remaining);
       } else {
@@ -101,47 +78,52 @@ function CityAutocomplete({
     } else {
       setSuggestionText('');
     }
+
+    debouncedSearch(val);
   };
 
-  const handleSelectCity = (city) => {
+  const handleSelectCity = (city, cityId) => {
+    setInputValue(city);
     setIsOpen(false);
     setSuggestions([]);
-    setHighlightedIndex(-1);
     setSuggestionText('');
-    
+    setHighlightedIndex(-1);
+
     if (onChange) {
-      onChange(city);
-    }
-    if (onSelect) {
-      onSelect(city);
+      onChange(city, cityId);
     }
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Tab' && suggestionText) {
       e.preventDefault();
-      handleSelectCity(value + suggestionText);
+      const firstMatch = suggestions[0];
+      if (firstMatch) {
+        handleSelectCity(firstMatch.name, firstMatch._id);
+      }
       return;
     }
-    
+
     if (!isOpen) return;
-    
+
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setHighlightedIndex(prev => 
+      setHighlightedIndex(prev =>
         prev < suggestions.length - 1 ? prev + 1 : 0
       );
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setHighlightedIndex(prev => 
+      setHighlightedIndex(prev =>
         prev > 0 ? prev - 1 : suggestions.length - 1
       );
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (highlightedIndex >= 0 && highlightedIndex < suggestions.length) {
-        handleSelectCity(suggestions[highlightedIndex]);
+        const item = suggestions[highlightedIndex];
+        handleSelectCity(item.name, item._id);
       } else if (suggestions.length > 0) {
-        handleSelectCity(suggestions[0]);
+        const item = suggestions[0];
+        handleSelectCity(item.name, item._id);
       }
     } else if (e.key === 'Escape') {
       setIsOpen(false);
@@ -150,14 +132,8 @@ function CityAutocomplete({
   };
 
   const handleFocus = () => {
-    if (!value.trim()) {
-      const filtered = CITIES.slice(0, 10);
-      setSuggestions(filtered);
-      setIsOpen(true);
-    } else {
-      const filtered = filterCities(value);
-      setSuggestions(filtered);
-      setIsOpen(filtered.length > 0);
+    if (inputValue.trim()) {
+      fetchCities(inputValue);
     }
   };
 
@@ -167,7 +143,7 @@ function CityAutocomplete({
     const style = window.getComputedStyle(input);
     const paddingLeft = parseFloat(style.paddingLeft) || 21;
     const charWidth = 10;
-    const textWidth = value.length * charWidth;
+    const textWidth = inputValue.length * charWidth;
     return paddingLeft + textWidth + 4;
   };
 
@@ -179,14 +155,14 @@ function CityAutocomplete({
           type="text"
           className="direction-group__input"
           placeholder={placeholder}
-          value={value}
+          value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
           autoComplete="off"
         />
-        {suggestionText && value.trim() && (
-          <span 
+        {suggestionText && inputValue.trim() && (
+          <span
             className="city-autocomplete__suggestion"
             style={{
               left: `${getSuggestionOffset()}px`
@@ -196,17 +172,17 @@ function CityAutocomplete({
           </span>
         )}
       </div>
-      
+
       {isOpen && suggestions.length > 0 && (
         <div className="city-autocomplete__dropdown">
-          {suggestions.map((city, index) => (
+          {suggestions.map((item, index) => (
             <div
-              key={city}
+              key={item._id || item.name}
               className={`city-autocomplete__item ${index === highlightedIndex ? 'city-autocomplete__item--highlighted' : ''}`}
-              onClick={() => handleSelectCity(city)}
+              onClick={() => handleSelectCity(item.name, item._id)}
               onMouseEnter={() => setHighlightedIndex(index)}
             >
-              {city}
+              {item.name}
             </div>
           ))}
         </div>

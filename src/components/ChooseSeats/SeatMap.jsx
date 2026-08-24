@@ -7,9 +7,9 @@ import sittingMap from '../../Images/SeatMaps/sitting-map.png';
 import luxMap from '../../Images/SeatMaps/lux-map.png';
 import rubIcon from '../../Images/rubl.png';
 
-function SeatMap({ 
-  wagonType, 
-  wagon, 
+function SeatMap({
+  wagonType,
+  wagon,
   wagonImage,
   adults = 0,
   children = 0,
@@ -38,7 +38,7 @@ function SeatMap({
   const imageSrc = wagonImage || mapImages[wagonType] || coupeMap;
 
   const getSeatPositions = () => {
-    switch(wagonType) {
+    switch (wagonType) {
       case 'Сидячий':
         return {
           11: { top: '44%', left: '41%' },
@@ -85,8 +85,8 @@ function SeatMap({
 
   const toggleSeat = (seatNumber) => {
     setSelectedSeats(prev => {
-      const newSeats = prev.includes(seatNumber) 
-        ? prev.filter(s => s !== seatNumber) 
+      const newSeats = prev.includes(seatNumber)
+        ? prev.filter(s => s !== seatNumber)
         : [...prev, seatNumber];
 
       if (onSeatsSelected) {
@@ -96,13 +96,13 @@ function SeatMap({
         }));
         onSeatsSelected(seatsWithType);
       }
-      
+
       return newSeats;
     });
   };
 
   const getSeatSize = () => {
-    switch(wagonType) {
+    switch (wagonType) {
       case 'Сидячий': return { width: '27px', height: '19px', fontSize: '12px' };
       case 'Люкс': return { width: '27px', height: '60px', fontSize: '14px' };
       default: return { width: '28px', height: '28px', fontSize: '12px' };
@@ -153,12 +153,12 @@ function SeatMap({
 
       <div className="seat-map__image-container">
         <div className="seat-map__image-wrapper">
-          <img 
-            src={imageSrc} 
+          <img
+            src={imageSrc}
             alt={`Схема вагона ${wagon?.number || ''}`}
             className="seat-map__image"
           />
-          
+
           {availableSeats.map((seatNumber) => {
             const pos = seatPositions[seatNumber];
             if (!pos) return null;

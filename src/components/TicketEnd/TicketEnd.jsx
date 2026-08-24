@@ -16,11 +16,17 @@ function TicketEnd({
   childPrice = 1010,
   wagonTypes = ['Сидячий', 'Плацкарт', 'Купе', 'Люкс'],
   selectedType = 'Плацкарт',
-  onWagonTypeSelect = () => {}
+  onWagonTypeSelect = () => {},
+  onTicketCountChange = () => {}
 }) {
+
   if (!ticket) {
     return <div>Загрузка данных о поезде...</div>;
   }
+
+  const handleTicketCountSelect = (data) => {
+    onTicketCountChange(data);
+  };
 
   return (
     <div className="ticketend">
@@ -34,6 +40,7 @@ function TicketEnd({
           adults={adults} 
           children={children} 
           childrenWithoutSeat={childrenWithoutSeat} 
+          onSelect={handleTicketCountSelect}
         />
         <WagonType 
           types={wagonTypes} 

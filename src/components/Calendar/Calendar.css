@@ -132,7 +132,7 @@
   cursor: default;
   pointer-events: none;
 }
-  
+
 .calendar__day--today {
   font-weight: 600;
 }

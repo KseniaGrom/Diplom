@@ -3,7 +3,13 @@ import './Info.css';
 import InfoIcon from '../../Images/exclamation.png';
 import ClearButton from '../ClearButton/ClearButton';
 
-function Info({ onClose, onHome }) {
+function Info({ 
+  onClose, 
+  onHome,
+  title = 'Информация',
+  message = 'Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных',
+  showButton = true
+}) {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleClose = () => {
@@ -23,25 +29,26 @@ function Info({ onClose, onHome }) {
     return null;
   }
 
-
   return (
     <div className="info">
-        <div className="info-container">
-            <div className="info-head">
-                <img
-                    src={InfoIcon}
-                    alt=''
-                    className="info-icon"
-                />
-            </div>
-            <div className="info-content">
-                <p className="info-text-top">Таким образом консультация с широким активом в значительной степени обуславливает создание модели развития.</p>
-                <p className="info-text">Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных </p>
-            </div>
-            <div className="info-button">
-                <ClearButton />
-            </div>
+      <div className="info-container">
+        <div className="info-head">
+          <img
+            src={InfoIcon}
+            alt=""
+            className="info-icon"
+          />
         </div>
+        <div className="info-content">
+          <p className="info-text-top">{title}</p>
+          <p className="info-text">{message}</p>
+        </div>
+        {showButton && (
+          <div className="info-button">
+            <ClearButton onClick={handleClose} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

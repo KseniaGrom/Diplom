@@ -4,7 +4,12 @@ import HeaderPages from '../HeaderPages/HeaderPages';
 import ErorrIcon from '../../Images/exclamation.png';
 import ClearButton from '../ClearButton/ClearButton';
 
-function Error({ onClose, onHome }) {
+function Error({
+  onClose,
+  onHome,
+  title = 'Таким образом консультация с широким активом в значительной степени обуславливает создание модели развития.',
+  message = 'Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных'
+}) {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleClose = () => {
@@ -35,8 +40,8 @@ function Error({ onClose, onHome }) {
           />
         </div>
         <div className="error-content">
-          <p className="error-text-top">Таким образом консультация с широким активом в значительной степени обуславливает создание модели развития.</p>
-          <p className="error-text">Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных</p>
+          <p className="error-text-top">{title}</p>
+          <p className="error-text">{message}</p>
         </div>
         <div className="error-button">
           <ClearButton onClick={handleClose} />

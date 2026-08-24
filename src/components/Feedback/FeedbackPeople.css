@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 
-.feedback-people-img{
+.feedback-people-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -20,7 +20,7 @@
     gap: 85px;
 }
 
-.feedback-people__container__block{
+.feedback-people__container__block {
     display: flex;
 }
 
@@ -43,16 +43,16 @@
 }
 
 .feedback-people__content {
-  display: flex;
-  align-items: flex-start;
+    display: flex;
+    align-items: flex-start;
 }
 
 .feedback-people__marks {
-  font-size: 36px;
-  font-weight: 500;
-  color: #928F94;
-  line-height: 1;
-  margin-top: -8px;
+    font-size: 36px;
+    font-weight: 500;
+    color: #928F94;
+    line-height: 1;
+    margin-top: -8px;
 }
 
 .feedback-people__marks--end {
@@ -63,8 +63,8 @@
 }
 
 .feedback-people__text {
-  font-size: 18px;
-  font-weight: 300;
-  color: #928F94;   
-  flex: 1;            
+    font-size: 18px;
+    font-weight: 300;
+    color: #928F94;
+    flex: 1;
 }

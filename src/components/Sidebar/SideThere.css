@@ -55,7 +55,6 @@
     background-image: url('../../Images/SideThere/plus-act.png');
 }
 
-/* ★ РАСШИРЕННАЯ СЕКЦИЯ ★ */
 .sidethere__expand {
     margin-top: 16px;
     padding: 22px 0 46px 0;
@@ -64,7 +63,6 @@
     gap: 16px;
 }
 
-/* ★ СЛАЙДЕР ★ */
 .sidethere__slider-values {
     display: flex;
     justify-content: space-between;

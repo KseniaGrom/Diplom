@@ -30,7 +30,6 @@ function PassengerInfo({
           <div className="passenger-info__title-group">
             <img src={passengerIcon} alt="Пассажиры" className="passenger-info__icon" />
             <span className="passenger-info__title">Пассажиры</span>
-            <span className="passenger-info__total-count">(0)</span>
           </div>
           <div className="passenger-info__toggle">
             <img src={isExpanded ? minusIcon : plusIcon} alt="toggle" className="passenger-info__toggle-icon" />

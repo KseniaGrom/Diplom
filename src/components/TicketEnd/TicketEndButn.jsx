@@ -13,6 +13,7 @@ function TicketEndButn({
   const navigate = useNavigate();
 
   const handleClick = () => {
+
     navigate('/passengers', {
       state: {
         ticket: ticket,

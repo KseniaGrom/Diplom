@@ -16,7 +16,7 @@
 }
 
 .check-button:active {
-  border:none;
-  color: #292929;
-  background-color: #FFA800;
+    border: none;
+    color: #292929;
+    background-color: #FFA800;
 }

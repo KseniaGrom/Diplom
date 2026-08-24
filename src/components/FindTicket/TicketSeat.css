@@ -132,3 +132,31 @@
   height: 16px;
   object-fit: contain;
 }
+
+.ticket-seat__details {
+  display: flex;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #E5E5E5;
+}
+
+.ticket-seat__detail-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.ticket-seat__detail-label {
+  color: #928F94;
+}
+
+.ticket-seat__detail-count {
+  font-weight: 600;
+  color: #292929;
+}
+
+.ticket-seat__detail-price {
+  font-weight: 600;
+  color: #FFA800;
+}
