@@ -8,7 +8,7 @@ import arrowLeftIcon from '../../Images/FindTicket/strelkaleft.png';
 function TicketRoute({ departure, arrival, travelTime, direction = 'there', label }) {
 
   if (!departure || !arrival) {
-    console.warn('⚠️ TicketRoute: нет данных о маршруте', { departure, arrival });
+    console.warn('TicketRoute: нет данных о маршруте', { departure, arrival });
     return null;
   }
 

@@ -17,7 +17,7 @@ function TicketButton({
     const routeId = ticket?._id || ticket?.id;
 
     if (!routeId) {
-      console.error('❌ ID направления не найден');
+      console.error('ID направления не найден');
       alert('Ошибка: не удалось найти ID направления');
       return;
     }

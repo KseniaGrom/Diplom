@@ -6,7 +6,7 @@ import TicketSeats from './TicketSeats';
 
 function TicketCard({ ticket, departureDate, returnDate }) {
   if (!ticket) {
-    console.warn('⚠️ TicketCard: билет не передан');
+    console.warn('TicketCard: билет не передан');
     return null;
   }
 

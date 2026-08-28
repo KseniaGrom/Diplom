@@ -217,7 +217,7 @@ function Tickets() {
       }
     } catch (err) {
       setError(err.message);
-      console.error('❌ Ошибка загрузки билетов:', err);
+      console.error('Ошибка загрузки билетов:', err);
     } finally {
       setIsLoading(false);
     }

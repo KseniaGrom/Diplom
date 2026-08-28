@@ -170,7 +170,7 @@ function ChooseSeats({
       const type = getTypeName(classType);
 
       if (type === 'unknown' || type === undefined) {
-        console.warn('⚠️ Неизвестный тип вагона:', wagon);
+        console.warn('Неизвестный тип вагона:', wagon);
         return;
       }
 

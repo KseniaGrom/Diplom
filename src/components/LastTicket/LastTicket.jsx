@@ -16,7 +16,7 @@ function LastTicket() {
         const data = await getLast();
         setTickets(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error('❌ Ошибка загрузки последних билетов:', err);
+        console.error('Ошибка загрузки последних билетов:', err);
         setError('Не удалось загрузить последние билеты');
       } finally {
         setLoading(false);

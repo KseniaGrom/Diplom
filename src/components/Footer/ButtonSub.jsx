@@ -19,7 +19,6 @@ function ButtonSub({ email, onSuccess, onError }) {
     try {
       setIsLoading(true);
       const result = await getSubcribe(email.trim());
-      console.log('Подписка оформлена:', result);
     } catch (error) {
       console.error('Ошибка подписки:', error);
     } finally {

@@ -4,8 +4,6 @@ import './HeaderRow.css';
 function HeaderRow({ isLoading = false, onLoadComplete }) {
   const [progress, setProgress] = useState(100);
 
-  console.log('🔄 HeaderRow получил isLoading:', isLoading);
-
   useEffect(() => {
     if (isLoading) {
       setProgress(0);
