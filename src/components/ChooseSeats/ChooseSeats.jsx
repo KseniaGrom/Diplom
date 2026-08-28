@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './ChooseSeats.css';
 import TrainInfo from './TrainInfo';
@@ -82,8 +82,42 @@ function ChooseSeats({
 
   const wagonTypes = ['Сидячий', 'Плацкарт', 'Купе', 'Люкс'];
 
-  useEffect(() => {
+  // ✅ Оборачиваем onPriceChange в useCallback
+  const handlePriceChange = useCallback((price, childPrice) => {
+    if (onPriceChange) {
+      onPriceChange(price, childPrice);
+    }
+  }, [onPriceChange]);
 
+  // ✅ Оборачиваем handleTicketCountSelect в useCallback
+  const handleTicketCountSelect = useCallback((data) => {
+    setAdults(data.adults);
+    setChildren(data.children);
+    setChildrenWithoutSeat(data.childrenWithoutSeat);
+  }, []);
+
+  // ✅ Оборачиваем handleSeatsSelected в useCallback
+  const handleSeatsSelected = useCallback((seats) => {
+    setSelectedSeats(seats);
+  }, []);
+
+  // ✅ Оборачиваем handleWagonTypeSelect в useCallback
+  const handleWagonTypeSelect = useCallback((type) => {
+    setSelectedType(type);
+
+    const typeWagons = wagons.filter(w => w.type === type);
+    if (typeWagons.length > 0) {
+      const firstWagon = typeWagons[0];
+      const price = firstWagon.price || 0;
+      setAdultPrice(price);
+      setChildPrice(Math.round(price * 0.5));
+      if (onPriceChange) {
+        onPriceChange(price, Math.round(price * 0.5));
+      }
+    }
+  }, [wagons, onPriceChange]);
+
+  useEffect(() => {
     if (!routeId) {
       setError('ID направления не найден');
       setLoading(false);
@@ -227,6 +261,7 @@ function ChooseSeats({
 
   const filteredWagons = wagons.filter(w => w.type === selectedType);
 
+  // ✅ ИСПРАВЛЕННЫЙ useEffect — убраны adultPrice и childPrice из зависимостей
   useEffect(() => {
     const typeWagons = wagons.filter(w => w.type === selectedType);
     if (typeWagons.length > 0) {
@@ -236,17 +271,17 @@ function ChooseSeats({
       setOpenWagons([firstWagon.id]);
 
       const price = firstWagon.price || 0;
+      const newChildPrice = Math.round(price * 0.5);
+      
       setAdultPrice(price);
-      setChildPrice(Math.round(price * 0.5));
-      if (onPriceChange) {
-        onPriceChange(price, Math.round(price * 0.5));
-      }
+      setChildPrice(newChildPrice);
+      handlePriceChange(price, newChildPrice);
     } else {
       setSelectedWagons([]);
       setOpenWagons([]);
       setFirstWagonId(null);
     }
-  }, [selectedType, wagons]);
+  }, [selectedType, wagons, handlePriceChange]); // ✅ убрали adultPrice и childPrice
 
   const handleTicketCountChange = (data) => {
     setAdults(data.adults);
@@ -275,31 +310,6 @@ function ChooseSeats({
         onPriceChange(price, Math.round(price * 0.5));
       }
     }
-  };
-
-  const handleWagonTypeSelect = (type) => {
-    setSelectedType(type);
-
-    const typeWagons = wagons.filter(w => w.type === type);
-    if (typeWagons.length > 0) {
-      const firstWagon = typeWagons[0];
-      const price = firstWagon.price || 0;
-      setAdultPrice(price);
-      setChildPrice(Math.round(price * 0.5));
-      if (onPriceChange) {
-        onPriceChange(price, Math.round(price * 0.5));
-      }
-    }
-  };
-
-  const handleTicketCountSelect = (data) => {
-    setAdults(data.adults);
-    setChildren(data.children);
-    setChildrenWithoutSeat(data.childrenWithoutSeat);
-  };
-
-  const handleSeatsSelected = (seats) => {
-    setSelectedSeats(seats);
   };
 
   if (error) {
@@ -350,7 +360,7 @@ function ChooseSeats({
               <Info
                 title="Нет доступных вагонов"
                 message={`Для типа "${selectedType}" нет доступных вагонов. Выберите другой тип.`}
-                onClose={() => { }}
+                onClose={() => {}}
               />
             </div>
           </div>

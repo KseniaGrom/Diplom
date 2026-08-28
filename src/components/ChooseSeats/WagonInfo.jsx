@@ -41,8 +41,6 @@ function WagonInfo({ wagon, wagonType }) {
 
   useEffect(() => {
     if (wagon) {
-      console.log('🔍 WagonInfo получил wagon:', wagon);
-
       const hasWifi = wagon.wifi || wagon.have_wifi || false;
       const hasConditioner = wagon.conditioner || wagon.have_air_conditioning || false;
       const hasLinens = wagon.linens || wagon.is_linens_included || false;

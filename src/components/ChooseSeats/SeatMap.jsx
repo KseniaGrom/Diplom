@@ -88,15 +88,6 @@ function SeatMap({
       const newSeats = prev.includes(seatNumber)
         ? prev.filter(s => s !== seatNumber)
         : [...prev, seatNumber];
-
-      if (onSeatsSelected) {
-        const seatsWithType = newSeats.map(seat => ({
-          number: seat,
-          type: 'adult'
-        }));
-        onSeatsSelected(seatsWithType);
-      }
-
       return newSeats;
     });
   };
@@ -110,6 +101,17 @@ function SeatMap({
   };
 
   const seatSize = getSeatSize();
+
+  // ✅ Выносим onSeatsSelected в useEffect
+  useEffect(() => {
+    if (onSeatsSelected) {
+      const seatsWithType = selectedSeats.map(seat => ({
+        number: seat,
+        type: 'adult'
+      }));
+      onSeatsSelected(seatsWithType);
+    }
+  }, [selectedSeats, onSeatsSelected]);
 
   useEffect(() => {
     const selectedCount = selectedSeats.length;
